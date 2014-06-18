@@ -40,7 +40,7 @@ public class Prova {
     }
 
     public void setId_Prova(int id_Prova) {
-        this.id_Prova = id_Prova;
+        this.idProva = id_Prova;
     }
 
     public void setTipo(String tipo) {

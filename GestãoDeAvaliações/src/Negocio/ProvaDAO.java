@@ -12,10 +12,10 @@ import java.util.List;
  *
  * @author Ildevana
  */
-public class ProvaDAO {
-        List<Prova> buscarTodas() throws DAOProvaException;
-	Prova buscarPorId(int idProva) throws DAOProExcevaption;
-	void inserir(Prova prova) throws DAOProvaException;
-	void alterar(Prova prova) throws DAOProvaException;
+public abstract class ProvaDAO {
+        abstract List<Prova> buscarTodas() throws DAOProvaException;
+	abstract Prova buscarPorId(int idProva) throws DAOProExcevaption;
+	abstract void inserir(Prova prova) throws DAOProvaException;
+	abstract void alterar(Prova prova) throws DAOProvaException;
     
 }
