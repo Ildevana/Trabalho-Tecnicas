@@ -81,6 +81,7 @@ public class InicializadorBancoDados {
         sql = "CREATE  TABLE ITEMAVAL ("
                 + "  ID_ITEMAVAL NUMERIC(7) NOT NULL ,"
                 + "  ENUN VARCHAR(100) NOT NULL ,"
+                + "  COMENTARIO VARCHAR(100) ,"
                 + "  PRIMARY KEY (ID_ITEMAVAL) )";
         sta.execute(sql);
 
@@ -197,7 +198,6 @@ public class InicializadorBancoDados {
                 + "  ID_PROVA NUMERIC(7) NOT NULL ,"
                 + "  ID_ITEMAVAL NUMERIC(7) NOT NULL ,"
                 + "  ALTERNATIVA_MARCADA NUMERIC(7) NOT NULL ,"
-                + "  COMENTARIO VARCHAR(100) ,"
                 + "  PRIMARY KEY (ID_PROVA, ID_ITEMAVAL) ,"
                 + "  CONSTRAINT fk_RESPOSTAS_1"
                 + "    FOREIGN KEY (ID_PROVA,ID_ITEMAVAL )"

@@ -10,6 +10,10 @@ package Negocio;
  *
  * @author Ildevana
  */
-class DAOProvaException extends Exception {
+class DAOException extends Exception {
+
+    public DAOException(String msg) {
+        super(msg);
+    }
     
 }

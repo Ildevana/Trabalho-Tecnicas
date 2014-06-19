@@ -39,7 +39,7 @@ public class Prova {
         return qtdProva;
     }
 
-    public void setId_Prova(int id_Prova) {
+    private void setId_Prova(int id_Prova) {
         this.idProva = id_Prova;
     }
 

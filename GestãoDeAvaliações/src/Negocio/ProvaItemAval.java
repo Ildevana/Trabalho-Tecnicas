@@ -12,42 +12,41 @@ package Negocio;
  */
 public class ProvaItemAval {
 
-   
-    private Prova idProva;
-    private ItemAval item;
-    private String enumenciado;
-    
-     public ProvaItemAval(Prova idProva, ItemAval item, String enumenciado) {
+    private int idProva;
+    private int idItemAval;
+
+    public ProvaItemAval(int idProva, int idItemAval) {
         this.idProva = idProva;
-        this.item = item;
-        this.enumenciado = enumenciado;
+        this.idItemAval = idItemAval;
     }
 
-    public Prova getIdProva() {
+    /**
+     * @return the idProva
+     */
+    public int getIdProva() {
         return idProva;
     }
 
-    public ItemAval getItem() {
-        return item;
-    }
-
-    public String getEnumenciado() {
-        return enumenciado;
-    }
-
-    public void setIdProva(Prova idProva) {
+    /**
+     * @param idProva the idProva to set
+     */
+    public void setIdProva(int idProva) {
         this.idProva = idProva;
     }
 
-    public void setItem(ItemAval item) {
-        this.item = item;
+    /**
+     * @return the idItemAval
+     */
+    public int getIdItemAval() {
+        return idItemAval;
     }
 
-    public void setEnumenciado(String enumenciado) {
-        this.enumenciado = enumenciado;
+    /**
+     * @param idItemAval the idItemAval to set
+     */
+    public void setIdItemAval(int idItemAval) {
+        this.idItemAval = idItemAval;
     }
-     
-     
     
     
 }

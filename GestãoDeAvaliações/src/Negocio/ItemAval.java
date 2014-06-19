@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
@@ -11,42 +10,56 @@ package Negocio;
  * @author Ildevana
  */
 public class ItemAval {
-    private int itemAval;
+
+    private int ID_ItemAval;
     private String enumuciado;
-    private Alternativas itemAlternativas;
+    private String comentario;
 
-    public ItemAval(int itemAval, String enumuciado, Alternativas itemAlternativas) {
-        this.itemAval = itemAval;
+    public ItemAval(int ID_ItemAval, String enumuciado, String comentario) {
+        this.ID_ItemAval = ID_ItemAval;
         this.enumuciado = enumuciado;
-        this.itemAlternativas = itemAlternativas;
+        this.comentario = comentario;
     }
 
-    public int getItemAval() {
-        return itemAval;
+    /**
+     * @return the ID_ItemAval
+     */
+    public int getID_ItemAval() {
+        return ID_ItemAval;
     }
 
+    /**
+     * @param ID_ItemAval the ID_ItemAval to set
+     */
+    private void setID_ItemAval(int ID_ItemAval) {
+        this.ID_ItemAval = ID_ItemAval;
+    }
+
+    /**
+     * @return the enumuciado
+     */
     public String getEnumuciado() {
         return enumuciado;
     }
 
-    public Alternativas getItemAlternativas() {
-        return itemAlternativas;
-    }
-
-    public void setItemAval(int itemAval) {
-        this.itemAval = itemAval;
-    }
-
+    /**
+     * @param enumuciado the enumuciado to set
+     */
     public void setEnumuciado(String enumuciado) {
         this.enumuciado = enumuciado;
     }
 
-    public void setItemAlternativas(Alternativas itemAlternativas) {
-        this.itemAlternativas = itemAlternativas;
+    /**
+     * @return the comentario
+     */
+    public String getComentario() {
+        return comentario;
     }
-    
-    
-    
-    
-    
+
+    /**
+     * @param comentario the comentario to set
+     */
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
 }
