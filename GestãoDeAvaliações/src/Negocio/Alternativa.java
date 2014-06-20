@@ -11,13 +11,13 @@ package Negocio;
  * @author Ildevana
  */
 public class Alternativa {
-    private int ID_ItemAval;
+    private int idItemAval;
     private int sq_alternativa;
     private String texto;
     private boolean correta;
 
-    public Alternativa(int ID_ItemAval, int sq_alternativa, String texto, boolean correta) {
-        this.ID_ItemAval = ID_ItemAval;
+    public Alternativa(int idItemAval, int sq_alternativa, String texto, boolean correta) {
+        this.idItemAval = idItemAval;
         this.sq_alternativa = sq_alternativa;
         this.texto = texto;
         this.correta = correta;
@@ -26,15 +26,15 @@ public class Alternativa {
     /**
      * @return the ID_ItemAval
      */
-    public int getID_ItemAval() {
-        return ID_ItemAval;
+    public int getIdItemAval() {
+        return idItemAval;
     }
 
     /**
      * @param ID_ItemAval the ID_ItemAval to set
      */
-    public void setID_ItemAval(int ID_ItemAval) {
-        this.ID_ItemAval = ID_ItemAval;
+    public void setIdItemAval(int ID_ItemAval) {
+        this.idItemAval = ID_ItemAval;
     }
 
     /**

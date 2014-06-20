@@ -11,12 +11,12 @@ package Negocio;
  */
 public class ItemAval {
 
-    private int ID_ItemAval;
+    private int idItemAval;
     private String enumuciado;
     private String comentario;
 
-    public ItemAval(int ID_ItemAval, String enumuciado, String comentario) {
-        this.ID_ItemAval = ID_ItemAval;
+    public ItemAval(int idItemAval, String enumuciado, String comentario) {
+        this.idItemAval = idItemAval;
         this.enumuciado = enumuciado;
         this.comentario = comentario;
     }
@@ -24,15 +24,15 @@ public class ItemAval {
     /**
      * @return the ID_ItemAval
      */
-    public int getID_ItemAval() {
-        return ID_ItemAval;
+    public int getIdItemAval() {
+        return idItemAval;
     }
 
     /**
      * @param ID_ItemAval the ID_ItemAval to set
      */
-    private void setID_ItemAval(int ID_ItemAval) {
-        this.ID_ItemAval = ID_ItemAval;
+    private void setIdItemAval(int ID_ItemAval) {
+        this.idItemAval = ID_ItemAval;
     }
 
     /**
