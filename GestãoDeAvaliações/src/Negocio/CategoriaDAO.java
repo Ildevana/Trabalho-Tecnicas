@@ -1,15 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Negocio;
 
+import java.util.List;
+
 /**
- *
- * @author Ildevana
+ * 
+ *  @author Ildevana
+ * 
  */
-public class CategoriaDAO {
-    
+public abstract class CategoriaDAO {
+
+	public abstract void inserir(Categoria cat);
+
+	public abstract void alterar(Categoria cat);
+
+	public abstract void excluir(Categoria cat);
+
+	public abstract Categoria buscarPorId(int cat);
+
+	public abstract List<Categoria> buscarTodas();
+
 }
