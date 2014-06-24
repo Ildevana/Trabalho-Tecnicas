@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Thu Jun 19 09:57:06 BRT 2014:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0146-b433-b4ce-0000035c0ca0 
+Tue Jun 24 17:37:36 BRT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0146-cf99-1b50-0000035ba558 
 on database directory /home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/GerenciadorCadastroProvas  with class loader sun.misc.Launcher$AppClassLoader@121f956 
 Loaded from file:/home/lasaro/Trabalho-Tecnicas/derby.jar
 java.vendor=Oracle Corporation
