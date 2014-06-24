@@ -15,6 +15,7 @@ import java.util.List;
 public abstract class ProvaDAO {
         public abstract List<Prova> buscarTodas() throws DAOException;
 	public abstract Prova buscarPorId(int idProva) throws DAOException;
+	public abstract Prova buscarPorHash(int hashProva) throws DAOException;
 	public abstract void inserir(Prova prova) throws DAOException;
 	public abstract void alterar(Prova prova) throws DAOException;
         public abstract List<ItemAval> getItens(int idProva) throws DAOException;
