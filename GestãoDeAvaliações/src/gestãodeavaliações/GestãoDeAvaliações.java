@@ -6,6 +6,10 @@
 
 package gestãodeavaliações;
 
+import dados.InicializadorBancoDados;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Ildevana
@@ -16,7 +20,12 @@ public class GestãoDeAvaliações {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            // TODO code application logic here
+            //InicializadorBancoDados.criarBd();//já criado :D
+        } catch (Exception ex) {
+            Logger.getLogger(GestãoDeAvaliações.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

@@ -27,7 +27,7 @@ public class Categoria {
         return nome;
     }
 
-    public void setCat(int cat) {
+    private void setCat(int cat) {
         this.cat = cat;
     }
 

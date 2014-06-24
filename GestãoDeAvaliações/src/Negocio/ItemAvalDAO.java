@@ -1,15 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package Negocio;
 
+import java.util.List;
+
 /**
- *
- * @author Ildevana
+ * 
+ *  @author Ildevana
+ * 
  */
-public class ItemAvalDAO {
-    
+public interface ItemAvalDAO {
+
+	public abstract List<ItemAval> buscarTodos();
+
+	public abstract ItemAval buscarPorId(int idItemAval);
+
+	public abstract void inserir(ItemAval item);
+
+	public abstract void alterar(ItemAval item);
+
+	public abstract void addCategoria(int idItemAval, int cat);
+
+	public abstract List<Categoria> getCategorias(int idItemAval);
+
+	public abstract List<ItemAval> buscarPorCategoria(int cat);
+
 }
