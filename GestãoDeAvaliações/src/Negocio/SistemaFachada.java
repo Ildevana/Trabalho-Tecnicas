@@ -29,7 +29,7 @@ public class SistemaFachada {
         return null;
     }
 
-    public void gravarRespostas(List<Resposta> respostas) {
+    public void gravarRespostas(List<Resposta> respostas, Aluno aluno) {
 
     }
 

@@ -14,11 +14,13 @@ public class Resposta {
     private int idItemAval;
     private int idProva;
     private int alternativaMarcada;
+    private int idAluno;
 
-    public Resposta(int idItemAval, int idProva, int alternativaMarcada) {
+    public Resposta(int idItemAval, int idProva, int alternativaMarcada, int idAluno) {
         this.idItemAval = idItemAval;
         this.idProva = idProva;
         this.alternativaMarcada = alternativaMarcada;
+        this.idAluno = idAluno;
     }
 
     /**
@@ -61,5 +63,19 @@ public class Resposta {
      */
     public void setAlternativaMarcada(int alternativaMarcada) {
         this.alternativaMarcada = alternativaMarcada;
+    }
+
+    /**
+     * @return the idAluno
+     */
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    /**
+     * @param idAluno the idAluno to set
+     */
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
     }
 }

@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gestãodeavaliações;
 
-import dados.InicializadorBancoDados;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,5 +25,5 @@ public class GestãoDeAvaliações {
             Logger.getLogger(GestãoDeAvaliações.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

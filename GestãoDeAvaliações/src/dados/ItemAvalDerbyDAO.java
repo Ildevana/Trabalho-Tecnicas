@@ -36,11 +36,6 @@ public class ItemAvalDerbyDAO implements ItemAvalDAO{
     }
 
     @Override
-    public void alterar(ItemAval item) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void addCategoria(int idItemAval, int cat) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -54,5 +49,5 @@ public class ItemAvalDerbyDAO implements ItemAvalDAO{
     public List<ItemAval> buscarPorCategoria(int cat) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

@@ -3,18 +3,16 @@ package Negocio;
 import java.util.List;
 
 /**
- * 
- *  @author Ildevana
- * 
+ *
+ * @author Ildevana
+ *
  */
-public abstract class AlternativaDAO {
+public interface AlternativaDAO {
 
-	public abstract void inserir(Alternativa alt);
+    public void inserir(Alternativa alt);
 
-	public abstract void alterar(Alternativa alt);
+    public List<Alternativa> buscarTodasDoItem(int item);
 
-	public abstract List<Alternativa> buscarTodasDoItem(int item);
-
-	public abstract Alternativa buscarCorretaDoItem(int item);
+    public Alternativa buscarCorretaDoItem(int item);
 
 }
