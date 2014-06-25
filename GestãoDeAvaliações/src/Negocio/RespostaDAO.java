@@ -3,14 +3,14 @@ package Negocio;
 import java.util.List;
 
 /**
- * 
- *  @author Ildevana
- * 
+ *
+ * @author Ildevana
+ *
  */
-public abstract class RespostaDAO {
+public interface RespostaDAO {
 
-	public abstract List<Resposta> buscarPorProva(int idProva);
+    public List<Resposta> buscarPorProva(int idProva);
 
-	public abstract void inserir(Resposta resposta);
+    public void inserir(Resposta resposta);
 
 }

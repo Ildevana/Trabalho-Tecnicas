@@ -3,22 +3,20 @@ package Negocio;
 import java.util.List;
 
 /**
- * 
- *  @author Ildevana
- * 
+ *
+ * @author Ildevana
+ *
  */
-public abstract class ProvaDAO {
+public interface ProvaDAO {
 
-	public abstract List<Prova> buscarTodas();
+    public List<Prova> buscarTodas();
 
-	public abstract Prova buscarPorId(int idProva);
+    public Prova buscarPorId(int idProva);
 
-	public abstract void inserir(Prova prova);
+    public void inserir(Prova prova);
 
-	public abstract void alterar(Prova prova);
+    public List<ItemAval> getItens(int idProva);
 
-	public abstract List<ItemAval> getItens(int idProva);
-
-	public abstract Prova buscarPorHash(String hashProva);
+    public Prova buscarPorHash(String hashProva);
 
 }

@@ -3,24 +3,22 @@ package Negocio;
 import java.util.List;
 
 /**
- * 
- *  @author Ildevana
- * 
+ *
+ * @author Ildevana
+ *
  */
 public interface ItemAvalDAO {
 
-	public abstract List<ItemAval> buscarTodos();
+    public List<ItemAval> buscarTodos();
 
-	public abstract ItemAval buscarPorId(int idItemAval);
+    public ItemAval buscarPorId(int idItemAval);
 
-	public abstract void inserir(ItemAval item);
+    public void inserir(ItemAval item);
 
-	public abstract void alterar(ItemAval item);
+    public void addCategoria(int idItemAval, int cat);
 
-	public abstract void addCategoria(int idItemAval, int cat);
+    public List<Categoria> getCategorias(int idItemAval);
 
-	public abstract List<Categoria> getCategorias(int idItemAval);
-
-	public abstract List<ItemAval> buscarPorCategoria(int cat);
+    public List<ItemAval> buscarPorCategoria(int cat);
 
 }
