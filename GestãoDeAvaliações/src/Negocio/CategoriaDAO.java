@@ -9,14 +9,11 @@ import java.util.List;
  */
 public interface CategoriaDAO {
 
-    public void inserir(Categoria cat);
+    public void inserir(Categoria cat) throws DAOException;
 
-    public void alterar(Categoria cat);
+    public void alterar(Categoria cat) throws DAOException;
 
-    public void excluir(Categoria cat);
+    public Categoria buscarPorId(int cat) throws DAOException;
 
-    public Categoria buscarPorId(int cat);
-
-    public List<Categoria> buscarTodas();
-
+    public List<Categoria> buscarTodas() throws DAOException;
 }

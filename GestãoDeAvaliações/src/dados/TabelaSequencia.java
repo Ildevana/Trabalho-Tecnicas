@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Negocio;
+package dados;
 
 /**
  *
- * @author Ildevana
+ * @author lasaro
  */
-public class DAOException extends Exception {
+public enum TabelaSequencia {
 
-    public DAOException(String msg) {
-        super(msg);
+    ItemAval, Alternativa, Aluno, Categoria, Prova;
+
+    public String getTable() {
+        return "";
     }
-
 }

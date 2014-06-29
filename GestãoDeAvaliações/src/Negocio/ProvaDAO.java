@@ -9,14 +9,14 @@ import java.util.List;
  */
 public interface ProvaDAO {
 
-    public List<Prova> buscarTodas();
+    public void inserir(Prova prova) throws DAOException;
 
-    public Prova buscarPorId(int idProva);
+    public void addCategoria(int idProva, int cat) throws DAOException;
 
-    public void inserir(Prova prova);
+    public Prova buscarPorId(int idProva) throws DAOException;
 
-    public List<ItemAval> getItens(int idProva);
+    public Prova buscarPorHash(String hashProva) throws DAOException;
 
-    public Prova buscarPorHash(String hashProva);
+    public List<Prova> buscarAbertas() throws DAOException;
 
 }

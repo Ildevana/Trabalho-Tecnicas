@@ -5,10 +5,7 @@
  */
 package dados;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -18,7 +15,7 @@ import java.util.Scanner;
  *
  * @author Ildevana
  */
-public class InicializadorBancoDados {
+public class GerenciadorBancoDados {
 
     private static final String dbName = "GerenciadorCadastroProvas";
 
@@ -53,5 +50,24 @@ public class InicializadorBancoDados {
 
     public static Connection conectarBd() throws Exception {
         return DriverManager.getConnection("jdbc:derby:" + dbName);
+    }
+
+    public static int getSequenciaTabela(TabelaSequencia tab) {
+        switch (tab) {
+            case ItemAval:
+                break;
+            case Alternativa:
+                break;
+            case Aluno:
+                break;
+            case Categoria:
+                break;
+            case Prova:
+                break;
+            default:
+                throw new AssertionError(tab.name());
+
+        }
+        return 1;
     }
 }
