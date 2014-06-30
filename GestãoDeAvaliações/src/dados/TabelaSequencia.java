@@ -21,6 +21,7 @@ public enum TabelaSequencia {
 
     private TabelaSequencia(String tabela, String campo) {
         tab = tabela;
+        camp=campo;
     }
 
     public String getSQLTable() {
@@ -29,9 +30,5 @@ public enum TabelaSequencia {
 
     public String getSQLField() {
         return camp;
-    }
-
-    public String getTable() {
-        return "";
     }
 }

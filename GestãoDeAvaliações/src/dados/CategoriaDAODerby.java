@@ -79,7 +79,7 @@ public class CategoriaDAODerby implements CategoriaDAO {
 
     @Override
     public List<Categoria> buscarTodas() throws DAOException {
-        List<Categoria> cats = null;
+        List<Categoria> cats = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ID_CATEGORIA, NOME_CAT FROM CATEGORIA";

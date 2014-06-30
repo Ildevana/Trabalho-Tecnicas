@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
@@ -11,6 +10,7 @@ package Negocio;
  * @author Ildevana
  */
 public class Categoria {
+
     private int cat;
     private String nome;
 
@@ -34,6 +34,10 @@ public class Categoria {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "" + cat + "\t-" + nome;
+    }
+
 }

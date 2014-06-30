@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ProvaDAODerby implements ProvaDAO {
@@ -83,7 +84,7 @@ public class ProvaDAODerby implements ProvaDAO {
 
     @Override
     public List<Prova> buscarAbertas() throws DAOException {
-        List<Prova> provas = null;
+        List<Prova> provas = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ID_PROVA, ABERTA, NOME_PROF, QT_QUESTOES, HASH FROM PROVA WHERE ABERTA = 1";

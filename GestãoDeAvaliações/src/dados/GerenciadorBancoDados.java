@@ -61,13 +61,13 @@ public class GerenciadorBancoDados {
             String sql = "SELECT MAX(" + tab.getSQLField() + ") FROM " + tab.getSQLTable();
             PreparedStatement sta = con.prepareStatement(sql);
             ResultSet res = sta.executeQuery();
-            int seq = 1;
+            int seq = 0;
             if (res.next()) {
                 seq = res.getInt(1);
             }
             res.close();
             con.close();
-            return seq;
+            return seq+1;
         } catch (Exception ex) {
             throw new DAOException("Falha na busca. " + ex.getMessage());
         }
