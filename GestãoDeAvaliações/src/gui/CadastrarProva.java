@@ -3,8 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
+
+import Negocio.Categoria;
+import Negocio.DAOException;
+import Negocio.SistemaFachada;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.ListModel;
 
 /**
  *
@@ -98,6 +107,11 @@ public class CadastrarProva extends javax.swing.JPanel {
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Salvar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -186,6 +200,24 @@ public class CadastrarProva extends javax.swing.JPanel {
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        SistemaFachada sis = new SistemaFachada();
+        ListModel list = jList2.getModel();
+        List<Categoria> listC = new LinkedList<>();
+        for (int i = 0; i < list.getSize(); i++) {
+            listC.add((Categoria) list.getElementAt(i));
+        }
+        String nome = jTextPane1.getText();
+        int num = Integer.parseInt(jTextPane2.getText());
+        boolean ab = jRadioButton1.isEnabled();
+        
+        try {
+            sis.criarProva(listC, nome, num, ab);
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

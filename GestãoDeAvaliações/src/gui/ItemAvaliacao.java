@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
+
+import Negocio.DAOException;
+import Negocio.ItemAval;
+import Negocio.SistemaFachada;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -217,7 +221,35 @@ public class ItemAvaliacao extends javax.swing.JPanel {
     }//GEN-LAST:event_jRadioButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String enu = jTextPane7.getText();
+        String com = jTextPane1.getText();
+        SistemaFachada sis = new SistemaFachada();
+        //ItemAval item;
+        try {
+            ItemAval item = sis.inserirItem(enu, com);
+            int id = item.getIdItemAval();
+            String txt = jTextPane2.getText();
+            boolean crt = jRadioButton1.isSelected();
+            sis.inserirAlternativa(id, txt, crt);
+
+            txt = jTextPane3.getText();
+            crt = jRadioButton2.isSelected();
+            sis.inserirAlternativa(id, txt, crt);
+
+            txt = jTextPane4.getText();
+            crt = jRadioButton3.isSelected();
+            sis.inserirAlternativa(id, txt, crt);
+
+            txt = jTextPane5.getText();
+            crt = jRadioButton4.isSelected();
+            sis.inserirAlternativa(id, txt, crt);
+
+            txt = jTextPane6.getText();
+            crt = jRadioButton5.isSelected();
+            sis.inserirAlternativa(id, txt, crt);
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed

@@ -137,10 +137,11 @@ public class SistemaFachada {
         return itemDAO.buscarPorId(idItemAval);
     }
 
-    public void inserirItem(String enumciado, String comentario) throws DAOException {
+    public ItemAval inserirItem(String enumciado, String comentario) throws DAOException {
         int idItemAval = GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.ItemAval);
         ItemAval item = new ItemAval(idItemAval, enumciado, comentario);
         itemDAO.inserir(item);
+        return item;
     }
 
     public void addCategoriaItem(int idItemAval, int cat) throws DAOException {
