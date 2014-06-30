@@ -16,7 +16,9 @@ public class ResultadoAvaliacao extends javax.swing.JPanel {
      * Creates new form ResultadoAvaliacao
      */
     public ResultadoAvaliacao() {
+        //controlador = new ResultAvalControlador;
         initComponents();
+        
     }
 
     /**
