@@ -22,4 +22,6 @@ public interface ItemAvalDAO {
     public List<ItemAval> buscarPorCategoria(int cat) throws DAOException;
 
     public List<ItemAval> buscarPorCategorias(List<Integer> cat) throws DAOException;
+
+    public int gerarNovaSeqAlternativa(int idItemAval);
 }

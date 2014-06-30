@@ -191,4 +191,9 @@ public class ItemAvalDAODerby implements ItemAvalDAO {
             throw new DAOException("Falha na busca. " + ex.getMessage());
         }
     }
+
+    @Override
+    public int gerarNovaSeqAlternativa(int idItemAval) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

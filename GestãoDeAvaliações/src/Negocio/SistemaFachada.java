@@ -83,4 +83,107 @@ public class SistemaFachada {
         return "" + (new Integer(id).hashCode());
     }
 
+    public void inserirAlternativa(int idItemAval,String texto,boolean correta) throws DAOException{
+        int sq= itemDAO.gerarNovaSeqAlternativa(idItemAval);
+        Alternativa alt = new Alternativa(idItemAval, sq, texto, correta);
+        altDAO.inserir(alt);
+    }
+
+    public List<Alternativa> buscarTodasAlternativasDoItem(int item) throws DAOException{
+        return altDAO.buscarTodasDoItem(item);
+    }
+
+    public Alternativa buscarAlternativaCorretaDoItem(int item) throws DAOException{
+        return altDAO.buscarCorretaDoItem(item);
+    }
+
+    public void inserirAluno(String nome) throws DAOException{
+        int idAluno =  GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.Aluno);
+        Aluno a= new Aluno(idAluno, nome);
+        aluDAO.inserir(a);
+    }
+
+    public Aluno buscarAlunoPorId(int idAluno) throws DAOException{
+        return aluDAO.buscarPorId(idAluno);
+    }
+
+    public List<Aluno> buscarTodosAlunos() throws DAOException{
+        return aluDAO.buscarTodos();
+    }
+
+    public void inserirCategoria(String nome) throws DAOException{
+        int id =  GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.Categoria);
+        Categoria cat = new Categoria(id, nome);
+        catDAO.inserir(cat);
+    }
+
+    public void alterarCategoria(Categoria cat) throws DAOException{
+        catDAO.alterar(cat);
+    }
+
+    public Categoria buscarCategoriaPorId(int cat) throws DAOException{
+        return catDAO.buscarPorId(cat);
+    }
+
+    public List<Categoria> buscarTodasCategorias() throws DAOException{
+        return catDAO.buscarTodas();
+    }
+
+    public List<ItemAval> buscarTodosItens() throws DAOException{
+        return itemDAO.buscarTodos();
+    }
+
+    public ItemAval buscarItemPorId(int idItemAval) throws DAOException{
+        return itemDAO.buscarPorId(idItemAval);
+    }
+
+    public void inserirItem(String enumciado,String comentario) throws DAOException{
+        int idItemAval = GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.ItemAval);
+        ItemAval item=new ItemAval(idItemAval, enumciado, comentario);
+        itemDAO.inserir(item);
+    }
+
+    public void addCategoriaItem(int idItemAval, int cat) throws DAOException{
+        
+    }
+
+    public List<Categoria> getCategorias(int idItemAval) throws DAOException{
+        return null;
+    }
+
+    public List<ItemAval> buscarItemPorCategoria(int cat) throws DAOException{
+        return null;
+    }
+
+    public void inserirProva(Prova prova) throws DAOException{
+        
+    }
+
+    public void addCategoriaProva(int idProva, int cat) throws DAOException{
+        
+    }
+
+    public Prova buscarProvaPorId(int idProva) throws DAOException{
+        return null;
+    }
+
+    public Prova buscarProvaPorHash(String hashProva) throws DAOException{
+        return null;
+    }
+
+    public List<Prova> buscarProvasAbertas() throws DAOException{
+        return null;
+    }
+
+    public List<ItemAval> buscarItensPorCategorias(List<Integer> cat) throws DAOException{
+        return null;
+    }
+
+    public void inserirResposta(Resposta resposta) throws DAOException{
+        
+    }
+
+    public List<Resposta> buscarRespostasPorProva(int idProva) throws DAOException{
+        return null;
+    }
 }
