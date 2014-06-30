@@ -9,16 +9,17 @@ import java.util.List;
  */
 public interface ItemAvalDAO {
 
-    public List<ItemAval> buscarTodos();
+    public List<ItemAval> buscarTodos() throws DAOException;
 
-    public ItemAval buscarPorId(int idItemAval);
+    public ItemAval buscarPorId(int idItemAval) throws DAOException;
 
-    public void inserir(ItemAval item);
+    public void inserir(ItemAval item) throws DAOException;
 
-    public void addCategoria(int idItemAval, int cat);
+    public void addCategoria(int idItemAval, int cat) throws DAOException;
 
-    public List<Categoria> getCategorias(int idItemAval);
+    public List<Categoria> getCategorias(int idItemAval) throws DAOException;
 
-    public List<ItemAval> buscarPorCategoria(int cat);
+    public List<ItemAval> buscarPorCategoria(int cat) throws DAOException;
 
+    public List<ItemAval> buscarPorCategorias(List<Integer> cat) throws DAOException;
 }

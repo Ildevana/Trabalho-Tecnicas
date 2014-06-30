@@ -9,10 +9,10 @@ import java.util.List;
  */
 public interface AlternativaDAO {
 
-    public void inserir(Alternativa alt);
+    public void inserir(Alternativa alt) throws DAOException;
 
-    public List<Alternativa> buscarTodasDoItem(int item);
+    public List<Alternativa> buscarTodasDoItem(int item) throws DAOException;
 
-    public Alternativa buscarCorretaDoItem(int item);
+    public Alternativa buscarCorretaDoItem(int item) throws DAOException;
 
 }

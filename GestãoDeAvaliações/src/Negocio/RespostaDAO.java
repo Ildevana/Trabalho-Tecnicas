@@ -9,8 +9,8 @@ import java.util.List;
  */
 public interface RespostaDAO {
 
-    public List<Resposta> buscarPorProva(int idProva);
+    public void inserir(Resposta resposta) throws DAOException;
 
-    public void inserir(Resposta resposta);
+    public List<Resposta> buscarPorProva(int idProva) throws DAOException;
 
 }
