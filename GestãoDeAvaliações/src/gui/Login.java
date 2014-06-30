@@ -101,7 +101,7 @@ public class Login extends javax.swing.JPanel {
 
     private void ID_NOMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_NOMEActionPerformed
        ID_NOME.getSelectedItem();
-       jTextPane1.setContentType();
+       
     }//GEN-LAST:event_ID_NOMEActionPerformed
 
 
