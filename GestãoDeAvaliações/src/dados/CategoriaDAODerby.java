@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -86,6 +87,31 @@ public class CategoriaDAODerby implements CategoriaDAO {
             ResultSet res = sta.executeQuery();
             while (res.next()) {
                 cats.add(new Categoria(res.getInt("ID_CATEGORIA"), res.getString("NOME_CAT")));
+            }
+            res.close();
+            con.close();
+            return cats;
+        } catch (Exception ex) {
+            throw new DAOException("Falha na busca. " + ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<Categoria> buscarPorProva(int idProva) throws DAOException {
+        List<Categoria> cats = new LinkedList<>();;
+        try {
+            Connection con = GerenciadorBancoDados.conectarBd();
+            String sql = "SELECT PROVACAT.ID_PROVA, PROVACAT.ID_CATEGORIA,CAT.NOME_CAT"
+                    + " FROM PROVA_CATEGORIA PROVACAT"
+                    + " LEFT JOIN CATEGORIA CAT"
+                    + " ON CAT.ID_CATEGORIA = PROVACAT.ID_CATEGORIA"
+                    + " WHERE PROVACAT.ID_PROVA = ?";
+            PreparedStatement sta = con.prepareStatement(sql);
+            sta.setInt(1, idProva);
+            ResultSet res = sta.executeQuery();
+            while (res.next()) {
+                Categoria cat = new Categoria(res.getInt("ID_CATEGORIA"), res.getString("NOME_CAT"));
+                cats.add(cat);
             }
             res.close();
             con.close();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestãodeavaliações;
+package gestaodeavaliacoes;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  *
  * @author Ildevana
  */
-public class GestãoDeAvaliações {
+public class GestaoDeAvaliacoes {
 
     /**
      * @param args the command line arguments
@@ -22,7 +22,7 @@ public class GestãoDeAvaliações {
             // TODO code application logic here
             //InicializadorBancoDados.criarBd();//já criado :D
         } catch (Exception ex) {
-            Logger.getLogger(GestãoDeAvaliações.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestaoDeAvaliacoes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

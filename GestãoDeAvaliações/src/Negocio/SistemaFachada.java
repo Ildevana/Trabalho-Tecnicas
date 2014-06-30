@@ -8,6 +8,7 @@ import dados.ItemAvalDAODerby;
 import dados.ProvaDAODerby;
 import dados.RespostaDAODerby;
 import dados.TabelaSequencia;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -51,8 +52,8 @@ public class SistemaFachada {
         return p.getHash();
     }
 
-    public Queue<ItemAval> getFilaQuestoes(Prova prova) {
-        return null;
+    public Queue<ItemAval> getFilaQuestoes(Prova prova) throws Exception {
+        return (new GeradorFilaQuestoes()).gerarFilaProva(prova);
     }
 
     public List<Prova> avaliacoesDisponiveis() {
@@ -156,8 +157,16 @@ public class SistemaFachada {
         return itemDAO.buscarPorCategoria(cat);
     }
 
-    public List<ItemAval> buscarItensPorCategorias(List<Integer> cat) throws DAOException {
+    public List<ItemAval> buscarItensPorIdCategorias(List<Integer> cat) throws DAOException {
         return itemDAO.buscarPorCategorias(cat);
+    }
+
+    public List<ItemAval> buscarItensPorCategorias(List<Categoria> cats) throws DAOException {
+        List<Integer> catIDs = new ArrayList<>();
+        for (Categoria cat : cats) {
+            catIDs.add(cat.getCat());
+        }
+        return buscarItensPorIdCategorias(catIDs);
     }
 
     public Prova buscarProvaPorId(int idProva) throws DAOException {
@@ -179,5 +188,9 @@ public class SistemaFachada {
 
     public List<Resposta> buscarRespostasPorProva(int idProva) throws DAOException {
         return respDAO.buscarPorProva(idProva);
+    }
+
+    public List<Categoria> buscarCategoriasProva(int idProva) throws DAOException {
+        return catDAO.buscarPorProva(idProva);
     }
 }

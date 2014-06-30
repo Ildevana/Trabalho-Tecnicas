@@ -16,4 +16,6 @@ public interface CategoriaDAO {
     public Categoria buscarPorId(int cat) throws DAOException;
 
     public List<Categoria> buscarTodas() throws DAOException;
+
+    public List<Categoria> buscarPorProva(int idProva) throws DAOException;
 }
