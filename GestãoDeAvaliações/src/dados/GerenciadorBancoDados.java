@@ -5,9 +5,12 @@
  */
 package dados;
 
+import Negocio.DAOException;
 import java.io.FileReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -52,22 +55,21 @@ public class GerenciadorBancoDados {
         return DriverManager.getConnection("jdbc:derby:" + dbName);
     }
 
-    public static int getSequenciaTabela(TabelaSequencia tab) {
-        switch (tab) {
-            case ItemAval:
-                break;
-            case Alternativa:
-                break;
-            case Aluno:
-                break;
-            case Categoria:
-                break;
-            case Prova:
-                break;
-            default:
-                throw new AssertionError(tab.name());
-
+    public static int getSequenciaTabela(TabelaSequencia tab) throws DAOException {
+        try {
+            Connection con = conectarBd();
+            String sql = "SELECT MAX(" + tab.getSQLField() + ") FROM " + tab.getSQLTable();
+            PreparedStatement sta = con.prepareStatement(sql);
+            ResultSet res = sta.executeQuery();
+            int seq = 1;
+            if (res.next()) {
+                seq = res.getInt(1);
+            }
+            res.close();
+            con.close();
+            return seq;
+        } catch (Exception ex) {
+            throw new DAOException("Falha na busca. " + ex.getMessage());
         }
-        return 1;
     }
 }

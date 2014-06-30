@@ -11,7 +11,25 @@ package dados;
  */
 public enum TabelaSequencia {
 
-    ItemAval, Alternativa, Aluno, Categoria, Prova;
+    ItemAval("ITEMAVAL", "ID_ITEMAVAL"),
+    Alternativa("ALTERNATIVAS", "ID_ITEMAVAL"),
+    Aluno("ALUNOS", "ID_ALUNO"),
+    Categoria("CATEGORIA", "ID_CATEGORIA"),
+    Prova("PROVA", "ID_PROVA");
+    String tab;
+    String camp;
+
+    private TabelaSequencia(String tabela, String campo) {
+        tab = tabela;
+    }
+
+    public String getSQLTable() {
+        return tab;
+    }
+
+    public String getSQLField() {
+        return camp;
+    }
 
     public String getTable() {
         return "";
