@@ -11,43 +11,71 @@ package Negocio;
  * @author Ildevana
  */
 public class Resposta {
-    private int idResposta;
-    private Prova idProva;
-    private ItemAval item;
-    private String respMarcada;
-    private String comentário;
+    private int idItemAval;
+    private int idProva;
+    private int alternativaMarcada;
+    private int idAluno;
 
-    public Resposta(int idResposta, Prova idProva, ItemAval item, String respMarcada, String comentário) {
-        this.idResposta = idResposta;
+    public Resposta(int idItemAval, int idProva, int alternativaMarcada, int idAluno) {
+        this.idItemAval = idItemAval;
         this.idProva = idProva;
-        this.item = item;
-        this.respMarcada = respMarcada;
-        this.comentário = comentário;
+        this.alternativaMarcada = alternativaMarcada;
+        this.idAluno = idAluno;
     }
 
-    public int getIdResposta() {
-        return idResposta;
+    /**
+     * @return the idItemAval
+     */
+    public int getIdItemAval() {
+        return idItemAval;
     }
 
-    public Prova getIdProva() {
+    /**
+     * @param idItemAval the idItemAval to set
+     */
+    public void setIdItemAval(int idItemAval) {
+        this.idItemAval = idItemAval;
+    }
+
+    /**
+     * @return the idProva
+     */
+    public int getIdProva() {
         return idProva;
     }
 
-    public ItemAval getItem() {
-        return item;
+    /**
+     * @param idProva the idProva to set
+     */
+    public void setIdProva(int idProva) {
+        this.idProva = idProva;
     }
 
-    
-    public String getRespMarcada() {
-        return respMarcada;
+    /**
+     * @return the alternativaMarcada
+     */
+    public int getAlternativaMarcada() {
+        return alternativaMarcada;
     }
 
-    public String getComentário() {
-        return comentário;
+    /**
+     * @param alternativaMarcada the alternativaMarcada to set
+     */
+    public void setAlternativaMarcada(int alternativaMarcada) {
+        this.alternativaMarcada = alternativaMarcada;
     }
-    
-    
-    
-    
-    
+
+    /**
+     * @return the idAluno
+     */
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    /**
+     * @param idAluno the idAluno to set
+     */
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
 }

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
@@ -11,24 +10,23 @@ package Negocio;
  * @author Ildevana
  */
 public class Prova {
+
     private int idProva;
-    private String tipo;
+    private boolean aberta;
     private String nomeProf;
     private int qtdProva;
-    
-     public Prova(int idProva, String tipo, String nomeProf, int qtdProva) {
+    private String hash;
+
+    public Prova(int idProva, boolean aberta, String nomeProf, int qtdProva, String hash) {
         this.idProva = idProva;
-        this.tipo = tipo;
+        this.aberta = aberta;
         this.nomeProf = nomeProf;
         this.qtdProva = qtdProva;
+        this.hash = hash;
     }
 
     public int getIdProva() {
         return idProva;
-    }
-
-    public String getTipo() {
-        return tipo;
     }
 
     public String getNomeProf() {
@@ -39,12 +37,8 @@ public class Prova {
         return qtdProva;
     }
 
-    public void setId_Prova(int id_Prova) {
-        this.id_Prova = id_Prova;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    private void setId_Prova(int id_Prova) {
+        this.idProva = id_Prova;
     }
 
     public void setNomeProf(String nomeProf) {
@@ -54,6 +48,26 @@ public class Prova {
     public void setQtdProva(int qtdProva) {
         this.qtdProva = qtdProva;
     }
-     
-     
+
+    /**
+     * @return the aberta
+     */
+    public boolean isAberta() {
+        return aberta;
+    }
+
+    /**
+     * @param aberta the aberta to set
+     */
+    public void setAberta(boolean aberta) {
+        this.aberta = aberta;
+    }
+
+    /**
+     * @return the hash
+     */
+    public String getHash() {
+        return hash;
+    }
+
 }

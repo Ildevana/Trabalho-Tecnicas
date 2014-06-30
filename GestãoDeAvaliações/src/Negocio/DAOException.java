@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
  *
  * @author Ildevana
  */
-class DAOProvaException extends Exception {
-    
+public class DAOException extends Exception {
+
+    public DAOException(String msg) {
+        super(msg);
+    }
+
 }
