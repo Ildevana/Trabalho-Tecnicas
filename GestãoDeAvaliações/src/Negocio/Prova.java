@@ -16,14 +16,14 @@ public class Prova {
     private int idProva;
     private boolean aberta;
     private String nomeProf;
-    private int qtdProva;
+    private int qtdQuestoes;
     private String hash;
 
-    public Prova(int idProva, boolean aberta, String nomeProf, int qtdProva, String hash) {
+    public Prova(int idProva, boolean aberta, String nomeProf, int qtdQuestoes, String hash) {
         this.idProva = idProva;
         this.aberta = aberta;
         this.nomeProf = nomeProf;
-        this.qtdProva = qtdProva;
+        this.qtdQuestoes = qtdQuestoes;
         this.hash = hash;
     }
 
@@ -35,8 +35,8 @@ public class Prova {
         return nomeProf;
     }
 
-    public int getQtdProva() {
-        return qtdProva;
+    public int getQtdQuestoes() {
+        return qtdQuestoes;
     }
 
     private void setId_Prova(int id_Prova) {
@@ -47,8 +47,8 @@ public class Prova {
         this.nomeProf = nomeProf;
     }
 
-    public void setQtdProva(int qtdProva) {
-        this.qtdProva = qtdProva;
+    public void setQtdQuestoes(int qtdQuestoes) {
+        this.qtdQuestoes = qtdQuestoes;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return "" + idProva + " " + (aberta ? "Aberta" : "Fechada") + " " + nomeProf + " " + qtdProva + " " + hash;
+        return "" + idProva + " " + (aberta ? "Aberta" : "Fechada") + " " + nomeProf + " " + qtdQuestoes + " " + hash;
     }
 
     @Override

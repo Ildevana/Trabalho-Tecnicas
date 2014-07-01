@@ -11,6 +11,7 @@ import Negocio.Prova;
 import Negocio.SistemaFachada;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 /**
@@ -29,6 +30,13 @@ public class ProvaController {
         try {
             List<Prova> provasAbertas = sis.buscarProvasAbertas();
             ProvaTableModel pTM = new ProvaTableModel(provasAbertas);
+            for (Prova prova : provasAbertas) {
+                List<Categoria> cats = sis.buscarCategoriasProva(prova.getIdProva());
+                for (Categoria c : cats) {
+                    System.out.println("cat: " + c);
+                }
+                //break;
+            }
             return pTM.getTableModel();
         } catch (DAOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

@@ -11,14 +11,14 @@ public class GeradorFilaQuestoes {
         SistemaFachada sis = new SistemaFachada();
         List<Categoria> cats = sis.buscarCategoriasProva(prova.getIdProva());
         List<ItemAval> itens = sis.buscarItensPorCategorias(cats);
-        if (itens.size() < prova.getQtdProva()) {
+        if (itens.size() < prova.getQtdQuestoes()) {
             throw new Exception("Quantidade de itens para a prova insuficiente");
         }
 
-        Queue<ItemAval> filaItens = new ArrayBlockingQueue<>(prova.getQtdProva());
+        Queue<ItemAval> filaItens = new ArrayBlockingQueue<>(prova.getQtdQuestoes());
 
         Collections.shuffle(itens);
-        for (int i = 0; i < prova.getQtdProva(); i++) {
+        for (int i = 0; i < prova.getQtdQuestoes(); i++) {
             ItemAval item = itens.get(i);
             item.setOrdemAlternativasAleatoria();
             filaItens.add(item);
@@ -31,14 +31,14 @@ public class GeradorFilaQuestoes {
         SistemaFachada sis = new SistemaFachada();
         List<Categoria> cats = sis.buscarCategoriasProva(prova.getIdProva());
         List<ItemAval> itens = sis.buscarItensPorCategorias(cats);
-        if (itens.size() < prova.getQtdProva()) {
+        if (itens.size() < prova.getQtdQuestoes()) {
             throw new Exception("Quantidade de itens para a prova insuficiente");
         }
 
-        Queue<ItemAval> filaItens = new ArrayBlockingQueue<>(prova.getQtdProva());
+        Queue<ItemAval> filaItens = new ArrayBlockingQueue<>(prova.getQtdQuestoes());
 
         Collections.shuffle(itens);
-        for (int i = 0; i < prova.getQtdProva(); i++) {
+        for (int i = 0; i < prova.getQtdQuestoes(); i++) {
             ItemAval item = itens.get(i);
             item.setOrdemAlternativasTexto();
             filaItens.add(item);

@@ -22,7 +22,7 @@ public class ProvaDAODerby implements ProvaDAO {
             sta.setInt(1, prova.getIdProva());
             sta.setInt(2, (prova.isAberta() ? 1 : 0));
             sta.setString(3, prova.getNomeProf());
-            sta.setInt(4, prova.getQtdProva());
+            sta.setInt(4, prova.getQtdQuestoes());
             sta.setString(5, prova.getHash());
             sta.executeUpdate();
             sta.close();
