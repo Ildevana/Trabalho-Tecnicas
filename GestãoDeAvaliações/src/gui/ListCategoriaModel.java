@@ -16,28 +16,41 @@ import javax.swing.AbstractListModel;
  */
 public class ListCategoriaModel extends AbstractListModel<String> {
 
-    private List<Object> texto;
+    private List<Categoria> lista;
 
     public ListCategoriaModel() {
         super();
-        this.texto = new ArrayList<>();
+        this.lista = new ArrayList<>();
     }
 
     public ListCategoriaModel(List<Categoria> dados) {
-        this.texto = new ArrayList<>();
+        this.lista = new ArrayList<>();
         if (dados != null) {
-            texto.addAll(dados);
+            lista.addAll(dados);
         }
     }
 
     @Override
     public int getSize() {
-        return texto.size();
+        return lista.size();
     }
 
     @Override
     public String getElementAt(int index) {
-        return texto.get(index).toString();
+        return lista.get(index).toString();
     }
 
+    public List<Categoria> getLista() {
+        return lista;
+    }
+
+    public void add(Categoria cat) {
+        if(lista.add(cat))
+            fireContentsChanged(this, 0, getSize());
+    }
+
+    public void remove(Categoria cat) {
+        if(lista.remove(cat))
+            fireContentsChanged(this, 0, getSize());
+    }
 }

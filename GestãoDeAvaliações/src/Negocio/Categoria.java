@@ -40,4 +40,23 @@ public class Categoria {
         return "" + cat + "\t-" + nome;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Categoria) {
+            Categoria c = (Categoria) obj;
+            if (c.getCat() != this.cat) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + this.cat;
+        return hash;
+    }
 }

@@ -52,4 +52,8 @@ public class CategoriaController {
         }
         return null;
     }
+
+    public ListCategoriaModel getListModel(ListModel model, List<Integer> cats) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

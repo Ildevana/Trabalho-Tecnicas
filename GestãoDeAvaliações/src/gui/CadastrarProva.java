@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 
 import Negocio.Categoria;
@@ -13,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 
@@ -24,12 +24,13 @@ public class CadastrarProva extends javax.swing.JFrame {
 
     private ProvaController pControl;
     private CategoriaController cControl;
+
     /**
      * Creates new form CadastrarProva
      */
     public CadastrarProva() {
-        pControl=new ProvaController();
-        cControl = new  CategoriaController();
+        pControl = new ProvaController();
+        cControl = new CategoriaController();
         initComponents();
     }
 
@@ -87,12 +88,14 @@ public class CadastrarProva extends javax.swing.JFrame {
         });
 
         btnRemCat.setText("<<");
-
-        lstCategorias.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        btnRemCat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemCatActionPerformed(evt);
+            }
         });
+
+        lstCategorias.setModel(new ListCategoriaModel());
+        lstCategorias.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane6.setViewportView(lstCategorias);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -125,22 +128,13 @@ public class CadastrarProva extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 8, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRemCat))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rdAberta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,7 +145,15 @@ public class CadastrarProva extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRemCat))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,9 +175,9 @@ public class CadastrarProva extends javax.swing.JFrame {
                         .addComponent(btnAddCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemCat))
-                    .addComponent(jScrollPane6)
-                    .addComponent(jScrollPane9))
-                .addGap(6, 6, 6)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -189,7 +191,17 @@ public class CadastrarProva extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddCatActionPerformed
-        // TODO add your handling code here:
+        List selecteds = lstBaseCat.getSelectedValuesList();
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        for (Object object : selecteds) {
+            String[] s = object.toString().split("-");
+            Categoria c = new Categoria(Integer.parseInt(s[0].trim()), s[1].trim());
+            m1.remove(c);
+            m2.add(c);
+        }
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
     }//GEN-LAST:event_btnAddCatActionPerformed
 
     private void rdAbertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAbertaActionPerformed
@@ -197,22 +209,32 @@ public class CadastrarProva extends javax.swing.JFrame {
     }//GEN-LAST:event_rdAbertaActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        SistemaFachada sis = new SistemaFachada();
-        ListModel list = lstCategorias.getModel();
-        List<Categoria> listC = new LinkedList<>();
-        for (int i = 0; i < list.getSize(); i++) {
-            listC.add((Categoria) list.getElementAt(i));
-        }
-        String nome = txtNomeProf.getText();
-        int num = Integer.parseInt(txtQtdQuestoes.getText());
-        boolean ab = rdAberta.isEnabled();
-
         try {
-            sis.criarProva(listC, nome, num, ab);
+            ListCategoriaModel list = (ListCategoriaModel) lstCategorias.getModel();
+            List<Categoria> listC = list.getLista();
+            String nome = txtNomeProf.getText();
+            int num = Integer.parseInt(txtQtdQuestoes.getText());
+            boolean ab = rdAberta.isEnabled();
+
+            pControl.inserir(listC, nome, num, ab);
         } catch (DAOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void btnRemCatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemCatActionPerformed
+        List selecteds = lstCategorias.getSelectedValuesList();
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        for (Object object : selecteds) {
+            String[] s = object.toString().split("-");
+            Categoria c = new Categoria(Integer.parseInt(s[0].trim()), s[1].trim());
+            m1.add(c);
+            m2.remove(c);
+        }
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
+    }//GEN-LAST:event_btnRemCatActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddCat;

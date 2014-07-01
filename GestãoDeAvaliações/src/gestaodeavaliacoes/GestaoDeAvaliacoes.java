@@ -24,9 +24,9 @@ public class GestaoDeAvaliacoes {
         try {
             // TODO code application logic here
             //InicializadorBancoDados.criarBd();//já criado :D
-            //new CadastrarProva().setVisible(true);
+            new CadastrarProva().setVisible(true);
             //new SelecaoProva().setVisible(true);
-            new CadastroCategoria().setVisible(true);
+            //new CadastroCategoria().setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(GestaoDeAvaliacoes.class.getName()).log(Level.SEVERE, null, ex);
         }
