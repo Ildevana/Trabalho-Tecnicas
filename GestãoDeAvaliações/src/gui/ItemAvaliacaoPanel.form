@@ -28,8 +28,8 @@
                   <Component id="rdAlt3" alignment="0" max="32767" attributes="0"/>
                   <Component id="rdAlt2" alignment="0" max="32767" attributes="0"/>
                   <Component id="rdAlt1" alignment="1" max="32767" attributes="0"/>
-                  <Component id="rdAlt4" alignment="0" pref="380" max="32767" attributes="0"/>
-                  <Component id="rdAlt5" alignment="0" pref="380" max="32767" attributes="0"/>
+                  <Component id="rdAlt4" alignment="0" max="32767" attributes="0"/>
+                  <Component id="rdAlt5" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnConfirmar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>

@@ -5,12 +5,7 @@
  */
 package gestaodeavaliacoes;
 
-import Negocio.ItemAval;
-import gui.CadastrarProva;
-import gui.CadastroCategoria;
 import gui.CadastroItemAval;
-import gui.ItemAvaliacao;
-import gui.SelecaoProva;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -23,12 +23,16 @@ import javax.swing.JRadioButton;
  */
 public class ItemAvaliacaoPanel extends javax.swing.JPanel {
 
+    private JRadioButton rdCorreta;
+
     /**
      * Creates new form ItemAvaliacaoPanel
      */
     public ItemAvaliacaoPanel() {
         initComponents();
         lblResultado.setVisible(false);
+        lblComentario.setVisible(false);
+        rdCorreta = null;
     }
 
     public ItemAvaliacaoPanel(ItemAval item) throws DAOException, Exception {
@@ -40,30 +44,45 @@ public class ItemAvaliacaoPanel extends javax.swing.JPanel {
         a = alts.poll();
         if (a != null) {
             rdAlt1.setText(a.getTexto());
+            if (a.isCorreta()) {
+                rdCorreta = rdAlt1;
+            }
         } else {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + "é insuficiente.");
         }
         a = alts.poll();
         if (a != null) {
             rdAlt2.setText(a.getTexto());
+            if (a.isCorreta()) {
+                rdCorreta = rdAlt1;
+            }
         } else {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + "é insuficiente.");
         }
         a = alts.poll();
         if (a != null) {
             rdAlt3.setText(a.getTexto());
+            if (a.isCorreta()) {
+                rdCorreta = rdAlt1;
+            }
         } else {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + "é insuficiente.");
         }
         a = alts.poll();
         if (a != null) {
             rdAlt4.setText(a.getTexto());
+            if (a.isCorreta()) {
+                rdCorreta = rdAlt1;
+            }
         } else {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + "é insuficiente.");
         }
         a = alts.poll();
         if (a != null) {
             rdAlt5.setText(a.getTexto());
+            if (a.isCorreta()) {
+                rdCorreta = rdAlt1;
+            }
         } else {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + "é insuficiente.");
         }
@@ -205,6 +224,13 @@ public class ItemAvaliacaoPanel extends javax.swing.JPanel {
         rdAlt4.setEnabled(false);
         rdAlt5.setEnabled(false);
         lblResultado.setVisible(true);
+
+        if (rdCorreta.isSelected()) {
+            lblResultado.setText("<html><b style=\"color:green;\">RESPOSTA CORRETA</b>");
+        } else {
+            lblResultado.setText("<html><b style=\"color:red;\">RESPOSTA ERRADA</b>");
+        }
+        lblComentario.setVisible(true);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
 
