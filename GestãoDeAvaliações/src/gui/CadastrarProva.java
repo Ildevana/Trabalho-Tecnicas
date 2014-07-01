@@ -43,6 +43,7 @@ public class CadastrarProva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tipoProva = new javax.swing.ButtonGroup();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         txtNomeProf = new javax.swing.JTextPane();
@@ -77,7 +78,6 @@ public class CadastrarProva extends javax.swing.JFrame {
         jLabel3.setText("Selecionar Categorias:");
 
         lstBaseCat.setModel(cControl.getListModel());
-        lstBaseCat.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane9.setViewportView(lstBaseCat);
 
         btnAddCat.setText(">>");
@@ -95,13 +95,14 @@ public class CadastrarProva extends javax.swing.JFrame {
         });
 
         lstCategorias.setModel(new ListCategoriaModel());
-        lstCategorias.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane6.setViewportView(lstCategorias);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Selecionar tipo de Prova:");
 
+        tipoProva.add(rdAberta);
         rdAberta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        rdAberta.setSelected(true);
         rdAberta.setText("Aberta");
         rdAberta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,6 +110,7 @@ public class CadastrarProva extends javax.swing.JFrame {
             }
         });
 
+        tipoProva.add(rdFechada);
         rdFechada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdFechada.setText("Fechada");
 
@@ -131,7 +133,7 @@ public class CadastrarProva extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -147,13 +149,13 @@ public class CadastrarProva extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnRemCat))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,8 +177,8 @@ public class CadastrarProva extends javax.swing.JFrame {
                         .addComponent(btnAddCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemCat))
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6))
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -214,9 +216,14 @@ public class CadastrarProva extends javax.swing.JFrame {
             List<Categoria> listC = list.getLista();
             String nome = txtNomeProf.getText();
             int num = Integer.parseInt(txtQtdQuestoes.getText());
-            boolean ab = rdAberta.isEnabled();
+            boolean ab = rdAberta.isSelected();
 
-            pControl.inserir(listC, nome, num, ab);
+            String hash = pControl.inserir(listC, nome, num, ab);
+            String msg = "Prova salva com sucesso!";
+            if (!ab) {
+                msg += "\nHash da prova: " + hash;
+            }
+            JOptionPane.showMessageDialog(null, msg, "Info", JOptionPane.INFORMATION_MESSAGE);
         } catch (DAOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -252,6 +259,7 @@ public class CadastrarProva extends javax.swing.JFrame {
     private javax.swing.JList lstCategorias;
     private javax.swing.JRadioButton rdAberta;
     private javax.swing.JRadioButton rdFechada;
+    private javax.swing.ButtonGroup tipoProva;
     private javax.swing.JTextPane txtNomeProf;
     private javax.swing.JTextPane txtQtdQuestoes;
     // End of variables declaration//GEN-END:variables

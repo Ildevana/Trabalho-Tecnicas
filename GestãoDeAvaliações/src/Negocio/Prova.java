@@ -5,6 +5,8 @@
  */
 package Negocio;
 
+import java.util.Objects;
+
 /**
  *
  * @author Ildevana
@@ -67,6 +69,29 @@ public class Prova {
      * @return the hash
      */
     public String getHash() {
+        return hash;
+    }
+
+    @Override
+    public String toString() {
+        return "" + idProva + " " + (aberta ? "Aberta" : "Fechada") + " " + nomeProf + " " + qtdProva + " " + hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Prova)) {
+            return false;
+        }
+        return obj.hashCode() == this.hashCode(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.idProva;
+        hash = 47 * hash + (this.aberta ? 1 : 0);
+        hash = 47 * hash + Objects.hashCode(this.nomeProf);
+        hash = 47 * hash + Objects.hashCode(this.hash);
         return hash;
     }
 

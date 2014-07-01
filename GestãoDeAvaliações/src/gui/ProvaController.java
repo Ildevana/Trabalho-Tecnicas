@@ -37,7 +37,8 @@ public class ProvaController {
         return null;
     }
 
-    public void inserir( List<Categoria> cats,String nomeProf,int qtQuestoes,boolean aberta) throws DAOException {
-        sis.criarProva(cats, nomeProf, qtQuestoes, aberta);
+    public String inserir(List<Categoria> cats, String nomeProf, int qtQuestoes, boolean aberta) throws DAOException {
+        String hash = sis.criarProva(cats, nomeProf, qtQuestoes, aberta);
+        return hash;
     }
 }

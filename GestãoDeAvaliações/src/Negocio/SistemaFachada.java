@@ -10,6 +10,7 @@ import dados.RespostaDAODerby;
 import dados.TabelaSequencia;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 
 public class SistemaFachada {
@@ -41,7 +42,7 @@ public class SistemaFachada {
     public String criarProva(List<Categoria> categorias, String nomeProf, int qtQuestoes, boolean aberta) throws DAOException {
         int id = GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.Prova);
 
-        Prova p = new Prova(id, aberta, nomeProf, qtQuestoes, gerarHash(id));
+        Prova p = new Prova(id, aberta, nomeProf, qtQuestoes, gerarHash(id, aberta, nomeProf));
 
         provaDAO.inserir(p);
 
@@ -80,8 +81,13 @@ public class SistemaFachada {
         return null;
     }
 
-    private String gerarHash(int id) {
-        return "" + (new Integer(id).hashCode());
+    private String gerarHash(int id, boolean aberta, Object nomeProf) {
+
+        int hash = 5;
+        hash = 47 * hash + id;
+        hash = 25 * hash + (aberta ? 1 : 0);
+        hash = 32 * hash + Objects.hashCode(nomeProf);
+        return "" + hash;
     }
 
     public void inserirAlternativa(int idItemAval, String texto, boolean correta) throws DAOException {
