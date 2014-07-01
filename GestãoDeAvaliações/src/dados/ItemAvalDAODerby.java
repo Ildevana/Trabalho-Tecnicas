@@ -198,7 +198,7 @@ public class ItemAvalDAODerby implements ItemAvalDAO {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT MAX(SQ_ALTERNATIVA) FROM ALTERNATIVAS WHERE ID_ITEMAVAL = ? GROUP BY ID_ITEMAVAL";
             PreparedStatement sta = con.prepareStatement(sql);
-            sta.setInt(idItemAval, idItemAval);
+            sta.setInt(1, idItemAval);
             ResultSet res = sta.executeQuery();
             int seq = 0;
             if (res.next()) {
