@@ -193,7 +193,22 @@ public class ItemAvalDAODerby implements ItemAvalDAO {
     }
 
     @Override
-    public int gerarNovaSeqAlternativa(int idItemAval) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int gerarNovaSeqAlternativa(int idItemAval) throws DAOException {
+        try {
+            Connection con = GerenciadorBancoDados.conectarBd();
+            String sql = "SELECT MAX(SQ_ALTERNATIVA) FROM ALTERNATIVAS WHERE ID_ITEMAVAL = ? GROUP BY ID_ITEMAVAL";
+            PreparedStatement sta = con.prepareStatement(sql);
+            sta.setInt(idItemAval, idItemAval);
+            ResultSet res = sta.executeQuery();
+            int seq = 0;
+            if (res.next()) {
+                seq = res.getInt(1);
+            }
+            res.close();
+            con.close();
+            return seq + 1;
+        } catch (Exception ex) {
+            throw new DAOException("Falha na busca. " + ex.getMessage());
+        }
     }
 }

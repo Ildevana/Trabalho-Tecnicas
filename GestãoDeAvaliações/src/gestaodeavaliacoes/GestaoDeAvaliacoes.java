@@ -5,8 +5,11 @@
  */
 package gestaodeavaliacoes;
 
+import Negocio.ItemAval;
 import gui.CadastrarProva;
 import gui.CadastroCategoria;
+import gui.CadastroItemAval;
+import gui.ItemAvaliacao;
 import gui.SelecaoProva;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,8 +28,9 @@ public class GestaoDeAvaliacoes {
             // TODO code application logic here
             //InicializadorBancoDados.criarBd();//já criado :D
             //new CadastrarProva().setVisible(true);
-            new SelecaoProva().setVisible(true);
+            //new SelecaoProva().setVisible(true);
             //new CadastroCategoria().setVisible(true);
+            new CadastroItemAval().setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(GestaoDeAvaliacoes.class.getName()).log(Level.SEVERE, null, ex);
         }
