@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
@@ -11,6 +10,7 @@ package Negocio;
  * @author Ildevana
  */
 public class Alternativa {
+
     private int idItemAval;
     private int sq_alternativa;
     private String texto;
@@ -78,6 +78,10 @@ public class Alternativa {
     public void setCorreta(boolean correta) {
         this.correta = correta;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Item: " + idItemAval + " Seq: " + sq_alternativa + " Correta: " + (correta ? "SIM" : "NAO") + " Texto: " + texto;
+    }
+
 }

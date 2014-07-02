@@ -74,7 +74,7 @@ public class Prova {
 
     @Override
     public String toString() {
-        return "" + idProva + " " + (aberta ? "Aberta" : "Fechada") + " " + nomeProf + " " + qtdQuestoes + " " + hash;
+        return "ID:" + idProva + "\nAberta:" + (aberta ? "SIM" : "NAO") + "\nNome Prof.:" + nomeProf + "\nQtd. Questoes:" + qtdQuestoes + "\nHash:" + hash;
     }
 
     @Override

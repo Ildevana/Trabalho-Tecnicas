@@ -10,6 +10,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -75,29 +77,30 @@ public class ItemAval {
         List<Alternativa> alts;
         if (alternativas == null) {
             alts = (new SistemaFachada()).buscarTodasAlternativasDoItem(idItemAval);
+            if (alts != null) {
+                Collections.sort(alts, new Comparator<Alternativa>() {
 
-            Collections.sort(alts, new Comparator<Alternativa>() {
+                    @Override
+                    public int compare(Alternativa o1, Alternativa o2) {
+                        /*Compares its two arguments for order.  Returns a negative integer,
+                         * zero, or a positive integer as the first argument is less than, equal
+                         * to, or greater than the second.*/
+                        if (o1.getSq_alternativa() < o2.getSq_alternativa()) {
+                            return -1;
+                        } else if (o1.getSq_alternativa() > o2.getSq_alternativa()) {
+                            return 1;
+                        }
 
-                @Override
-                public int compare(Alternativa o1, Alternativa o2) {
-                    /*Compares its two arguments for order.  Returns a negative integer,
-                     * zero, or a positive integer as the first argument is less than, equal
-                     * to, or greater than the second.*/
-                    if (o1.getSq_alternativa() < o2.getSq_alternativa()) {
-                        return -1;
-                    } else if (o1.getSq_alternativa() > o2.getSq_alternativa()) {
-                        return 1;
+                        return 0;
                     }
+                });
 
-                    return 0;
+                alternativas = new ArrayBlockingQueue<>(6);
+
+                for (int i = 0; i < alts.size(); i++) {
+                    Alternativa alternativa = alts.get(i);
+                    alternativas.add(alternativa);
                 }
-            });
-
-            alternativas = new ArrayBlockingQueue<>(6);
-
-            for (int i = 0; i < alts.size(); i++) {
-                Alternativa alternativa = alts.get(i);
-                alternativas.add(alternativa);
             }
         }
 
@@ -144,4 +147,26 @@ public class ItemAval {
             alternativas.add(alternativa);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ID:        ").append(idItemAval).append("\n");
+        sb.append("Enunciado: ").append(enumuciado).append("\n");
+        sb.append("Comentario:").append(comentario).append("\n");
+        sb.append("Alternativas:\n");
+        try {
+            alternativas = getAlternativas();
+            if (alternativas != null) {
+                for (Alternativa alternativa : alternativas) {
+                    sb.append("\t\t").append(alternativa);
+                }
+            }
+        } catch (DAOException ex) {
+            sb.append("Erro nas alternativas: ").append(ex.getMessage());
+        }
+
+        return sb.toString();
+    }
+
 }

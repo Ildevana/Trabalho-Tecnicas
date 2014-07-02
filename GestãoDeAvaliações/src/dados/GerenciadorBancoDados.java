@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
@@ -51,6 +52,32 @@ public class GerenciadorBancoDados {
         con.close();
     }
 
+    public static void limparBD() throws SQLException {
+        Connection con = DriverManager.getConnection("jdbc:derby:" + dbName + ";create=true");
+        Statement sta = con.createStatement();
+        String sql = null;
+
+        sql = "DELETE FROM RESPOSTAS;"
+                + "DELETE FROM ALUNOS;"
+                + "DELETE FROM PROVA_CATEGORIA;"
+                + "DELETE FROM ITEMAVAL_CATEGORIA;"
+                + "DELETE FROM CATEGORIA;"
+                + "DELETE FROM ALTERNATIVAS;"
+                + "DELETE FROM PROVA;"
+                + "DELETE FROM ITEMAVAL;";
+        
+        String[] split = sql.split(";");
+        for (String s : split) {
+            //System.out.println("'\n" + s + "'");
+            if (!s.trim().equals("")) {
+                sta.execute(s);
+            }
+        }
+
+        sta.close();
+        con.close();
+    }
+
     public static Connection conectarBd() throws Exception {
         return DriverManager.getConnection("jdbc:derby:" + dbName);
     }
@@ -67,7 +94,7 @@ public class GerenciadorBancoDados {
             }
             res.close();
             con.close();
-            return seq+1;
+            return seq + 1;
         } catch (Exception ex) {
             throw new DAOException("Falha na busca. " + ex.getMessage());
         }

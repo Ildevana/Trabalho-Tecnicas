@@ -224,7 +224,7 @@ public class CadastrarProva extends javax.swing.JFrame {
                 msg += "\nHash da prova: " + hash;
             }
             JOptionPane.showMessageDialog(null, msg, "Info", JOptionPane.INFORMATION_MESSAGE);
-        } catch (DAOException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
