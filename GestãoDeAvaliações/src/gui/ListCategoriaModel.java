@@ -45,12 +45,26 @@ public class ListCategoriaModel extends AbstractListModel<String> {
     }
 
     public void add(Categoria cat) {
-        if(lista.add(cat))
+        if (lista.add(cat)) {
             fireContentsChanged(this, 0, getSize());
+        }
     }
 
     public void remove(Categoria cat) {
-        if(lista.remove(cat))
+        if (lista.remove(cat)) {
             fireContentsChanged(this, 0, getSize());
+        }
+    }
+
+    public void addAll(List<Categoria> cats) {
+        if (lista.addAll(cats)) {
+            fireContentsChanged(this, 0, getSize());
+        }
+    }
+
+    void removeAll(List<Categoria> cats) {
+        if (lista.removeAll(cats)) {
+            fireContentsChanged(this, 0, getSize());
+        }
     }
 }

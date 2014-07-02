@@ -50,6 +50,8 @@ public class SelecaoProva extends javax.swing.JFrame {
         lstCategorias = new javax.swing.JList();
         btnAddCat = new javax.swing.JButton();
         btnRemCat = new javax.swing.JButton();
+        btnRemoveAll = new javax.swing.JButton();
+        btnAddAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +95,21 @@ public class SelecaoProva extends javax.swing.JFrame {
             }
         });
 
+        btnRemoveAll.setText("<<");
+        btnRemoveAll.setToolTipText("");
+        btnRemoveAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveAllActionPerformed(evt);
+            }
+        });
+
+        btnAddAll.setText(">>");
+        btnAddAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,9 +126,11 @@ public class SelecaoProva extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRemCat)
-                                    .addComponent(btnAddCat))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAddAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAddCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnRemCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -129,7 +148,7 @@ public class SelecaoProva extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addComponent(btnRealizarSelec))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
                                 .addContainerGap())))))
         );
         layout.setVerticalGroup(
@@ -141,9 +160,13 @@ public class SelecaoProva extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane9)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAddAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemCat))
+                        .addComponent(btnRemCat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemoveAll))
                     .addComponent(jScrollPane6)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -196,12 +219,34 @@ public class SelecaoProva extends javax.swing.JFrame {
         System.out.println("ID:" + tableAvaliacoes.getValueAt(row, 0));
     }//GEN-LAST:event_btnRealizarSelecActionPerformed
 
+    private void btnAddAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAllActionPerformed
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        List<Categoria> cats = m1.getLista();
+        m2.addAll(cats);
+        m1.removeAll(cats);
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
+    }//GEN-LAST:event_btnAddAllActionPerformed
+
+    private void btnRemoveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAllActionPerformed
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        List<Categoria> cats = m2.getLista();
+        m1.addAll(cats);
+        m2.removeAll(cats);
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
+    }//GEN-LAST:event_btnRemoveAllActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAll;
     private javax.swing.JButton btnAddCat;
     private javax.swing.JButton btnFiltrar;
     private javax.swing.JButton btnRealizarFechada;
     private javax.swing.JButton btnRealizarSelec;
     private javax.swing.JButton btnRemCat;
+    private javax.swing.JButton btnRemoveAll;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

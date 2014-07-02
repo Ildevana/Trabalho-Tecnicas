@@ -12,7 +12,9 @@ import Negocio.Prova;
 import Negocio.SistemaFachada;
 import dados.GerenciadorBancoDados;
 import gui.CadastrarProva;
+import gui.CadastroCategoria;
 import gui.CadastroItemAval;
+import gui.SelecaoProva;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,8 +33,8 @@ public class GestaoDeAvaliacoes {
         try {
             // TODO code application logic here
             //InicializadorBancoDados.criarBd();//já criado :D
-            new CadastrarProva().setVisible(true);
-            //new SelecaoProva().setVisible(true);
+            //new CadastrarProva().setVisible(true);
+            new SelecaoProva().setVisible(true);
             //new CadastroCategoria().setVisible(true);
             //new CadastroItemAval().setVisible(true);
             listarTudo();

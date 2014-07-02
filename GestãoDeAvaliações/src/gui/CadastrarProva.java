@@ -7,14 +7,9 @@ package gui;
 
 import Negocio.Categoria;
 import Negocio.DAOException;
-import Negocio.SistemaFachada;
-import java.util.LinkedList;
+import java.awt.HeadlessException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
 
 /**
  *
@@ -61,6 +56,8 @@ public class CadastrarProva extends javax.swing.JFrame {
         rdAberta = new javax.swing.JRadioButton();
         rdFechada = new javax.swing.JRadioButton();
         jButton7 = new javax.swing.JButton();
+        btnAddAll = new javax.swing.JButton();
+        btnRemoveAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,14 +77,15 @@ public class CadastrarProva extends javax.swing.JFrame {
         lstBaseCat.setModel(cControl.getListModel());
         jScrollPane9.setViewportView(lstBaseCat);
 
-        btnAddCat.setText(">>");
+        btnAddCat.setText(">");
+        btnAddCat.setToolTipText("");
         btnAddCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddCatActionPerformed(evt);
             }
         });
 
-        btnRemCat.setText("<<");
+        btnRemCat.setText("<");
         btnRemCat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemCatActionPerformed(evt);
@@ -122,6 +120,21 @@ public class CadastrarProva extends javax.swing.JFrame {
             }
         });
 
+        btnAddAll.setText(">>");
+        btnAddAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAllActionPerformed(evt);
+            }
+        });
+
+        btnRemoveAll.setText("<<");
+        btnRemoveAll.setToolTipText("");
+        btnRemoveAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,9 +164,11 @@ public class CadastrarProva extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRemCat))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAddAll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRemCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -172,13 +187,18 @@ public class CadastrarProva extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnAddAll)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAddCat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemCat))
-                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
+                        .addComponent(btnRemCat)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnRemoveAll)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,7 +244,7 @@ public class CadastrarProva extends javax.swing.JFrame {
                 msg += "\nHash da prova: " + hash;
             }
             JOptionPane.showMessageDialog(null, msg, "Info", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
+        } catch (NumberFormatException | DAOException | HeadlessException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -243,9 +263,31 @@ public class CadastrarProva extends javax.swing.JFrame {
         lstCategorias.setModel(m2);
     }//GEN-LAST:event_btnRemCatActionPerformed
 
+    private void btnAddAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAllActionPerformed
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        List<Categoria> cats = m1.getLista();
+        m2.addAll(cats);
+        m1.removeAll(cats);
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
+    }//GEN-LAST:event_btnAddAllActionPerformed
+
+    private void btnRemoveAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAllActionPerformed
+        ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
+        ListCategoriaModel m2 = (ListCategoriaModel) lstCategorias.getModel();
+        List<Categoria> cats = m2.getLista();
+        m1.addAll(cats);
+        m2.removeAll(cats);
+        lstBaseCat.setModel(m1);
+        lstCategorias.setModel(m2);
+    }//GEN-LAST:event_btnRemoveAllActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddAll;
     private javax.swing.JButton btnAddCat;
     private javax.swing.JButton btnRemCat;
+    private javax.swing.JButton btnRemoveAll;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
