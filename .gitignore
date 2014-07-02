@@ -2,3 +2,6 @@
 *.class
 GestãoDeAvaliações/build/built-jar.properties
 GestãoDeAvaliações/dist/README.TXT
+*.form
+*.netbeans_automatic_build
+*.netbeans_update_resources
