@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
 
+import Negocio.Alternativa;
 import Negocio.Categoria;
 import Negocio.DAOException;
 import Negocio.ItemAval;
 import Negocio.SistemaFachada;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -17,15 +19,23 @@ import javax.swing.JOptionPane;
  *
  * @author Ildevana
  */
-public class CadastroItemAval extends javax.swing.JFrame {
+public class CadastroItemAval extends javax.swing.JDialog {
+
     private final CategoriaController cControl;
+    private final ItemAvaliacaoController iControl;
 
     /**
      * Creates new form CadastroItemAval
+     * @param parent
+     * @param modal
      */
-    public CadastroItemAval() {
+    public CadastroItemAval(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         cControl = new CategoriaController();
+        iControl = new ItemAvaliacaoController();
         initComponents();
+        //pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -36,90 +46,81 @@ public class CadastroItemAval extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        corretaGrp = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextPane5 = new javax.swing.JTextPane();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        jTextPane6 = new javax.swing.JTextPane();
+        txtComentario = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextPane7 = new javax.swing.JTextPane();
-        btnAddAll = new javax.swing.JButton();
-        btnRemoveAll = new javax.swing.JButton();
+        txtEnumciado = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
         lstBaseCat = new javax.swing.JList();
-        btnAddCat = new javax.swing.JButton();
-        btnRemCat = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
         lstCategorias = new javax.swing.JList();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnAddAll = new javax.swing.JButton();
+        btnRemoveAll = new javax.swing.JButton();
+        btnAddCat = new javax.swing.JButton();
+        btnRemCat = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        rdAlt1 = new javax.swing.JRadioButton();
+        rdAlt2 = new javax.swing.JRadioButton();
+        rdAlt3 = new javax.swing.JRadioButton();
+        rdAlt4 = new javax.swing.JRadioButton();
+        rdAlt5 = new javax.swing.JRadioButton();
+        txtAlt1 = new javax.swing.JTextField();
+        txtAlt2 = new javax.swing.JTextField();
+        txtAlt3 = new javax.swing.JTextField();
+        txtAlt4 = new javax.swing.JTextField();
+        txtAlt5 = new javax.swing.JTextField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Criar Enunciado");
+        jLabel1.setText("Enumciado:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Respostas");
+        jScrollPane2.setViewportView(txtComentario);
 
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 140, 170));
 
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
-            }
-        });
+        jScrollPane8.setViewportView(txtEnumciado);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 460, 70));
+
+        lstBaseCat.setModel(cControl.getListModel());
+        jScrollPane9.setViewportView(lstBaseCat);
+
+        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 120, 170));
+
+        lstCategorias.setModel(new ListCategoriaModel());
+        jScrollPane10.setViewportView(lstCategorias);
+
+        getContentPane().add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 300, 120, 170));
+
+        jLabel2.setText("Alternativas:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+
         jLabel3.setText("Correta");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
 
-        jScrollPane2.setViewportView(jTextPane1);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Comentário");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("SALVAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("SALVAR");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
-
-        jScrollPane3.setViewportView(jTextPane2);
-
-        jScrollPane4.setViewportView(jTextPane3);
-
-        jScrollPane5.setViewportView(jTextPane4);
-
-        jScrollPane6.setViewportView(jTextPane5);
-
-        jScrollPane7.setViewportView(jTextPane6);
-
-        jScrollPane8.setViewportView(jTextPane7);
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 480, -1, -1));
 
         btnAddAll.setText(">>");
         btnAddAll.addActionListener(new java.awt.event.ActionListener() {
@@ -127,6 +128,7 @@ public class CadastroItemAval extends javax.swing.JFrame {
                 btnAddAllActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, 50, -1));
 
         btnRemoveAll.setText("<<");
         btnRemoveAll.setToolTipText("");
@@ -135,9 +137,7 @@ public class CadastroItemAval extends javax.swing.JFrame {
                 btnRemoveAllActionPerformed(evt);
             }
         });
-
-        lstBaseCat.setModel(cControl.getListModel());
-        jScrollPane9.setViewportView(lstBaseCat);
+        getContentPane().add(btnRemoveAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 390, 50, -1));
 
         btnAddCat.setText(">");
         btnAddCat.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +145,7 @@ public class CadastroItemAval extends javax.swing.JFrame {
                 btnAddCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 50, -1));
 
         btnRemCat.setText("<");
         btnRemCat.addActionListener(new java.awt.event.ActionListener() {
@@ -152,182 +153,87 @@ public class CadastroItemAval extends javax.swing.JFrame {
                 btnRemCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 50, -1));
 
-        lstCategorias.setModel(new ListCategoriaModel());
-        jScrollPane10.setViewportView(lstCategorias);
-
-        jLabel5.setFont(jLabel1.getFont());
         jLabel5.setText("Categorias");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(6, 6, 6)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnAddAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnAddCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(btnRemCat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                    .addComponent(jRadioButton5))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane3))
-                                    .addGap(25, 25, 25)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jRadioButton2)
-                                        .addComponent(jRadioButton1)
-                                        .addComponent(jRadioButton3)
-                                        .addComponent(jRadioButton4))))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
-                                .addComponent(jScrollPane6)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton5)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnAddAll)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnAddCat)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemCat)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRemoveAll))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
+        corretaGrp.add(rdAlt1);
+        rdAlt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdAlt1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rdAlt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        corretaGrp.add(rdAlt2);
+        getContentPane().add(rdAlt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+
+        corretaGrp.add(rdAlt3);
+        getContentPane().add(rdAlt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
+
+        corretaGrp.add(rdAlt4);
+        getContentPane().add(rdAlt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+
+        corretaGrp.add(rdAlt5);
+        rdAlt5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdAlt5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rdAlt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, -1, -1));
+        getContentPane().add(txtAlt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 420, 20));
+        getContentPane().add(txtAlt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 420, 20));
+        getContentPane().add(txtAlt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 420, 20));
+        getContentPane().add(txtAlt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 420, 20));
+        getContentPane().add(txtAlt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 420, 20));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, -1, 510));
+        getContentPane().add(filler2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 470, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rdAlt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAlt1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rdAlt1ActionPerformed
 
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+    private void rdAlt5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdAlt5ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton5ActionPerformed
+    }//GEN-LAST:event_rdAlt5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String enu = jTextPane7.getText();
-        String com = jTextPane1.getText();
-        SistemaFachada sis = new SistemaFachada();
-        //ItemAval item;
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            ItemAval item = sis.inserirItem(enu, com);
-            int id = item.getIdItemAval();
-            String txt = jTextPane2.getText();
-            boolean crt = jRadioButton1.isSelected();
-            sis.inserirAlternativa(id, txt, crt);
+            String txt;
+            boolean crt;
+            String enu = txtEnumciado.getText();
+            String com = txtComentario.getText();
+            List<Alternativa> alts = new ArrayList<>(5);
 
-            txt = jTextPane3.getText();
-            crt = jRadioButton2.isSelected();
-            sis.inserirAlternativa(id, txt, crt);
+            txt = txtAlt1.getText();
+            crt = rdAlt1.isSelected();
+            alts.add(new Alternativa(0, 0, txt, crt));
 
-            txt = jTextPane4.getText();
-            crt = jRadioButton3.isSelected();
-            sis.inserirAlternativa(id, txt, crt);
+            txt = txtAlt2.getText();
+            crt = rdAlt2.isSelected();
+            alts.add(new Alternativa(0, 0, txt, crt));
 
-            txt = jTextPane5.getText();
-            crt = jRadioButton4.isSelected();
-            sis.inserirAlternativa(id, txt, crt);
+            txt = txtAlt3.getText();
+            crt = rdAlt3.isSelected();
+            alts.add(new Alternativa(0, 0, txt, crt));
 
-            txt = jTextPane6.getText();
-            crt = jRadioButton5.isSelected();
-            sis.inserirAlternativa(id, txt, crt);
+            txt = txtAlt4.getText();
+            crt = rdAlt4.isSelected();
+            alts.add(new Alternativa(0, 0, txt, crt));
+
+            txt = txtAlt5.getText();
+            crt = rdAlt5.isSelected();
+            alts.add(new Alternativa(0, 0, txt, crt));
+
+            iControl.inserirItem(enu, com, alts);
         } catch (DAOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnAddAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAllActionPerformed
         ListCategoriaModel m1 = (ListCategoriaModel) lstBaseCat.getModel();
@@ -377,75 +283,37 @@ public class CadastroItemAval extends javax.swing.JFrame {
         lstCategorias.setModel(m2);
     }//GEN-LAST:event_btnRemCatActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(CadastroItemAval.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(CadastroItemAval.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(CadastroItemAval.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(CadastroItemAval.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new CadastroItemAval().setVisible(true);
-//            }
-//        });
-//    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAll;
     private javax.swing.JButton btnAddCat;
     private javax.swing.JButton btnRemCat;
     private javax.swing.JButton btnRemoveAll;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.ButtonGroup corretaGrp;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
-    private javax.swing.JTextPane jTextPane5;
-    private javax.swing.JTextPane jTextPane6;
-    private javax.swing.JTextPane jTextPane7;
     private javax.swing.JList lstBaseCat;
     private javax.swing.JList lstCategorias;
+    private javax.swing.JRadioButton rdAlt1;
+    private javax.swing.JRadioButton rdAlt2;
+    private javax.swing.JRadioButton rdAlt3;
+    private javax.swing.JRadioButton rdAlt4;
+    private javax.swing.JRadioButton rdAlt5;
+    private javax.swing.JTextField txtAlt1;
+    private javax.swing.JTextField txtAlt2;
+    private javax.swing.JTextField txtAlt3;
+    private javax.swing.JTextField txtAlt4;
+    private javax.swing.JTextField txtAlt5;
+    private javax.swing.JTextPane txtComentario;
+    private javax.swing.JTextPane txtEnumciado;
     // End of variables declaration//GEN-END:variables
 }

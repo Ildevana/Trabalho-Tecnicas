@@ -25,8 +25,9 @@ public class ItemAvaliacaoController {
 
     public void inserirItem(String enunciado, String comentario,List<Alternativa> alts) throws DAOException {
         ItemAval item = sis.inserirItem(enunciado, comentario);
+        int id = item.getIdItemAval();
         for (Alternativa a : alts) {
-            sis.inserirAlternativa(item.getIdItemAval(), a.getTexto(), a.isCorreta());
+            sis.inserirAlternativa(id, a.getTexto(), a.isCorreta());
         }
     }
 }

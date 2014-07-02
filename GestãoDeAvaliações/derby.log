@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Wed Jul 02 01:37:14 BRT 2014:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0146-f55c-bbdc-0000034253f8 
-on database directory /home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/GerenciadorCadastroProvas  with class loader sun.misc.Launcher$AppClassLoader@121f956 
-Loaded from file:/home/lasaro/Trabalho-Tecnicas/derby.jar
+Wed Jul 02 15:28:38 BRT 2014:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0146-f855-ea5d-000007e07948 
+on database directory C:\Users\Lasaro\Documents\GitHub\Trabalho-Tecnicas\GestãoDeAvaliações\GerenciadorCadastroProvas  with class loader sun.misc.Launcher$AppClassLoader@70dea4e 
+Loaded from file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/derby.jar
 java.vendor=Oracle Corporation
-java.runtime.version=1.7.0_51-b00
-user.dir=/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações
+java.runtime.version=1.8.0-b132
+user.dir=C:\Users\Lasaro\Documents\GitHub\Trabalho-Tecnicas\GestãoDeAvaliações
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

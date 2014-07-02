@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/dados/GerenciadorBancoDados.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gestaodeavaliacoes/GestaoDeAvaliacoes.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/dados/ItemAvalDAODerby.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/Negocio/Gerencia.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/Negocio/SistemaFachada.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/SelecaoProva.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/ListCategoriaModel.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/CategoriaController.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/CadastroItemAval.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/RealizacaoProva.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/Negocio/Categoria.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/ItemAvaliacaoPanel.java</file>
-            <file>file:/home/lasaro/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/Usuario.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/ItemAvaliacaoPanel.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/ItemAvaliacaoController.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/Negocio/Prova.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/gestaodeavaliacoes/GestaoDeAvaliacoes.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/gui/CadastrarProva.java</file>
+            <file>file:/C:/Users/Lasaro/Documents/GitHub/Trabalho-Tecnicas/GestãoDeAvaliações/src/Negocio/SistemaFachada.java</file>
         </group>
     </open-files>
 </project-private>

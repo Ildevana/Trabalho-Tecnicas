@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author lasaro
  */
-public class CadastrarProva extends javax.swing.JFrame {
+public class CadastrarProva extends javax.swing.JDialog {
 
     private ProvaController pControl;
     private CategoriaController cControl;
@@ -23,10 +23,13 @@ public class CadastrarProva extends javax.swing.JFrame {
     /**
      * Creates new form CadastrarProva
      */
-    public CadastrarProva() {
+    public CadastrarProva(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         pControl = new ProvaController();
         cControl = new CategoriaController();
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -37,13 +40,10 @@ public class CadastrarProva extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         tipoProva = new javax.swing.ButtonGroup();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
-        txtNomeProf = new javax.swing.JTextPane();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        txtQtdQuestoes = new javax.swing.JTextPane();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
@@ -58,24 +58,26 @@ public class CadastrarProva extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         btnAddAll = new javax.swing.JButton();
         btnRemoveAll = new javax.swing.JButton();
+        txtNomeProf = new javax.swing.JTextField();
+        txtQtdQuestoes = new javax.swing.JTextField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Nome Professor:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
 
-        jScrollPane8.setViewportView(txtNomeProf);
-
-        jScrollPane7.setViewportView(txtQtdQuestoes);
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Nº de Questoes:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Selecionar Categorias:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
 
         lstBaseCat.setModel(cControl.getListModel());
         jScrollPane9.setViewportView(lstBaseCat);
+
+        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 170, 190));
 
         btnAddCat.setText(">");
         btnAddCat.setToolTipText("");
@@ -84,6 +86,7 @@ public class CadastrarProva extends javax.swing.JFrame {
                 btnAddCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, -1));
 
         btnRemCat.setText("<");
         btnRemCat.addActionListener(new java.awt.event.ActionListener() {
@@ -91,15 +94,17 @@ public class CadastrarProva extends javax.swing.JFrame {
                 btnRemCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 50, -1));
 
         lstCategorias.setModel(new ListCategoriaModel());
         jScrollPane6.setViewportView(lstCategorias);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 170, 190));
+
         jLabel5.setText("Selecionar tipo de Prova:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 20));
 
         tipoProva.add(rdAberta);
-        rdAberta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdAberta.setSelected(true);
         rdAberta.setText("Aberta");
         rdAberta.addActionListener(new java.awt.event.ActionListener() {
@@ -107,18 +112,19 @@ public class CadastrarProva extends javax.swing.JFrame {
                 rdAbertaActionPerformed(evt);
             }
         });
+        getContentPane().add(rdAberta, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 20));
 
         tipoProva.add(rdFechada);
-        rdFechada.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         rdFechada.setText("Fechada");
+        getContentPane().add(rdFechada, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, 20));
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton7.setText("Salvar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 70, -1));
 
         btnAddAll.setText(">>");
         btnAddAll.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +132,7 @@ public class CadastrarProva extends javax.swing.JFrame {
                 btnAddAllActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 50, -1));
 
         btnRemoveAll.setText("<<");
         btnRemoveAll.setToolTipText("");
@@ -134,80 +141,10 @@ public class CadastrarProva extends javax.swing.JFrame {
                 btnRemoveAllActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rdAberta)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rdFechada)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAddAll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRemCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAddCat, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddAll)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddCat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemCat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoveAll)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdAberta)
-                    .addComponent(rdFechada)
-                    .addComponent(jButton7))
-                .addContainerGap())
-        );
+        getContentPane().add(btnRemoveAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 50, -1));
+        getContentPane().add(txtNomeProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 320, -1));
+        getContentPane().add(txtQtdQuestoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 40, -1));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 320));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,21 +225,20 @@ public class CadastrarProva extends javax.swing.JFrame {
     private javax.swing.JButton btnAddCat;
     private javax.swing.JButton btnRemCat;
     private javax.swing.JButton btnRemoveAll;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JList lstBaseCat;
     private javax.swing.JList lstCategorias;
     private javax.swing.JRadioButton rdAberta;
     private javax.swing.JRadioButton rdFechada;
     private javax.swing.ButtonGroup tipoProva;
-    private javax.swing.JTextPane txtNomeProf;
-    private javax.swing.JTextPane txtQtdQuestoes;
+    private javax.swing.JTextField txtNomeProf;
+    private javax.swing.JTextField txtQtdQuestoes;
     // End of variables declaration//GEN-END:variables
 }
