@@ -21,6 +21,7 @@ public class Gerencia extends javax.swing.JDialog {
         initComponents();
         pack();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**

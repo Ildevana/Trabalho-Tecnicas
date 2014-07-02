@@ -5,6 +5,7 @@
  */
 package gui;
 
+import Negocio.Aluno;
 import Negocio.Categoria;
 import java.util.List;
 
@@ -12,18 +13,24 @@ import java.util.List;
  *
  * @author lasaro
  */
-public class SelecaoProva extends javax.swing.JFrame {
+public class SelecaoProva extends javax.swing.JDialog {
 
     private CategoriaController cControl;
     private ProvaController pControl;
+    private Aluno aluno;
 
     /**
      * Creates new form SelecaoProva
      */
-    public SelecaoProva() {
+    public SelecaoProva(java.awt.Frame parent, boolean modal, Aluno umAluno) {
+        super(parent, modal);
         pControl = new ProvaController();
         cControl = new CategoriaController();
+        aluno = umAluno;
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -52,21 +59,30 @@ public class SelecaoProva extends javax.swing.JFrame {
         btnRemCat = new javax.swing.JButton();
         btnRemoveAll = new javax.swing.JButton();
         btnAddAll = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Avaliações disponíveis");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         tableAvaliacoes.setModel(new ProvaController().getAvaliacoesAbertas());
         tableAvaliacoes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableAvaliacoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableAvaliacoes);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 31, 440, 150));
+
         btnFiltrar.setText("Filtrar");
+        getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 100, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 830, 10));
 
         btnRealizarFechada.setText("Realizar prova fechada");
+        getContentPane().add(btnRealizarFechada, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 150, -1));
 
         jLabel2.setText("Hash de prova fechada:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, 20));
 
         btnRealizarSelec.setText("Realizar selecionada");
         btnRealizarSelec.addActionListener(new java.awt.event.ActionListener() {
@@ -74,12 +90,18 @@ public class SelecaoProva extends javax.swing.JFrame {
                 btnRealizarSelecActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRealizarSelec, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, 150, -1));
+        getContentPane().add(txtHash, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 110, 20));
 
         lstBaseCat.setModel(cControl.getListModel());
         jScrollPane9.setViewportView(lstBaseCat);
 
+        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, 150, 120));
+
         lstCategorias.setModel(new ListCategoriaModel());
         jScrollPane6.setViewportView(lstCategorias);
+
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 150, 120));
 
         btnAddCat.setText(">");
         btnAddCat.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +109,7 @@ public class SelecaoProva extends javax.swing.JFrame {
                 btnAddCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 60, 50, -1));
 
         btnRemCat.setText("<");
         btnRemCat.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +117,7 @@ public class SelecaoProva extends javax.swing.JFrame {
                 btnRemCatActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 89, 50, -1));
 
         btnRemoveAll.setText("<<");
         btnRemoveAll.setToolTipText("");
@@ -102,6 +126,7 @@ public class SelecaoProva extends javax.swing.JFrame {
                 btnRemoveAllActionPerformed(evt);
             }
         });
+        getContentPane().add(btnRemoveAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 118, 50, -1));
 
         btnAddAll.setText(">>");
         btnAddAll.addActionListener(new java.awt.event.ActionListener() {
@@ -109,79 +134,8 @@ public class SelecaoProva extends javax.swing.JFrame {
                 btnAddAllActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(13, 13, 13))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnRemoveAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAddAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnAddCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnRemCat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHash, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRealizarFechada)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnRealizarSelec))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE))
-                                .addContainerGap())))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane9)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddAll)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddCat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemCat)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemoveAll))
-                    .addComponent(jScrollPane6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFiltrar)
-                    .addComponent(btnRealizarSelec))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRealizarFechada)
-                    .addComponent(jLabel2)
-                    .addComponent(txtHash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(btnAddAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 31, 50, -1));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -247,6 +201,7 @@ public class SelecaoProva extends javax.swing.JFrame {
     private javax.swing.JButton btnRealizarSelec;
     private javax.swing.JButton btnRemCat;
     private javax.swing.JButton btnRemoveAll;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

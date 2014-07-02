@@ -6,8 +6,12 @@
 
 package gui;
 
+import Negocio.Aluno;
+import Negocio.DAOException;
 import Negocio.SistemaFachada;
-import javax.swing.JComboBox;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,5 +27,17 @@ public class AlunoControler {
         //fachada.addCadastroListener(listaAluno);
     }
 
-    
+    public ComboBoxModel getComboBoxModel(){
+        try {
+            List<Aluno> alunos = fachada.buscarTodosAlunos();
+            return new ListaAlunoModel(alunos);
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return null;
+    }
+
+    public void inserirAluno(String text) throws DAOException {
+        fachada.inserirAluno(text);
+    }
 }

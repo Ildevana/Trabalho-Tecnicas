@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AlunoDAODerby implements AlunoDAO {
@@ -56,7 +57,7 @@ public class AlunoDAODerby implements AlunoDAO {
 
     @Override
     public List<Aluno> buscarTodos() throws DAOException {
-        List<Aluno> alunos = null;
+        List<Aluno> alunos = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ID_ALUNO, NOME_ALUNO FROM ALUNOS";

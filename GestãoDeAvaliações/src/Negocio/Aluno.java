@@ -31,4 +31,8 @@ public class Aluno {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return "ID: " + idAluno + " Nome: " + nome;
+    }
 }

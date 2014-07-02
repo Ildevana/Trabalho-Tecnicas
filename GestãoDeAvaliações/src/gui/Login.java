@@ -3,20 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
+
+import Negocio.Aluno;
+import Negocio.DAOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Ildevana
  */
-public class Login extends javax.swing.JPanel {
+public class Login extends javax.swing.JDialog {
+
+    private java.awt.Frame parent;
+    private AlunoControler alunoControl;
 
     /**
      * Creates new form Login
+     *
+     * @param parent
+     * @param modal
      */
-    public Login() {
+    public Login(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        alunoControl = new AlunoControler();
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -28,90 +44,82 @@ public class Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        ID_NOME = new javax.swing.JComboBox();
+        cbxAluno = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnLogin = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Cadastre-se:");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ID_NOME.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ID_NOME.addActionListener(new java.awt.event.ActionListener() {
+        cbxAluno.setModel(alunoControl.getComboBoxModel());
+        add(cbxAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 330, -1));
+
+        jLabel3.setText("Nome:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
+
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ID_NOMEActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
+        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, 20));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Nome:");
+        jLabel4.setText("Selecione seu nome do aluno para entrar");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 210, -1));
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("OU cadastre-se");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 350, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 10));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 130, 10));
 
-        jButton1.setText("SALVAR");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Selecione Nome do Aluno");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)
-                            .addComponent(ID_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
-                .addContainerGap(20, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(157, 157, 157))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ID_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        btnLogin.setText("Entrar");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 60, 80, -1));
+        add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ID_NOMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ID_NOMEActionPerformed
-       ID_NOME.getSelectedItem();
-       
-    }//GEN-LAST:event_ID_NOMEActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        try {
+            alunoControl.inserirAluno(txtNome.getText());
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso.", "Info", JOptionPane.INFORMATION_MESSAGE);
+            cbxAluno.setModel(alunoControl.getComboBoxModel());
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        if (cbxAluno.getSelectedItem() != null) {
+            SelecaoProva sl = new SelecaoProva(parent, true, (Aluno) cbxAluno.getSelectedItem());
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione seus dados de aluno", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox ID_NOME;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox cbxAluno;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

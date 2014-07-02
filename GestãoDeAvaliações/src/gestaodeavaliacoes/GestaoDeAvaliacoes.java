@@ -73,7 +73,7 @@ public class GestaoDeAvaliacoes {
             //new SelecaoProva().setVisible(true);
             //new CadastroCategoria().setVisible(true);
             //new CadastroItemAval().setVisible(true);
-            new Usuario().setVisible(true);
+            new Usuario();
             listarTudo();
         } catch (Exception ex) {
             Logger.getLogger(GestaoDeAvaliacoes.class.getName()).log(Level.SEVERE, null, ex);

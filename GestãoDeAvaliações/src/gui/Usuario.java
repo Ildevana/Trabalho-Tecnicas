@@ -18,6 +18,7 @@ public class Usuario extends javax.swing.JFrame {
     public Usuario() {
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -98,16 +99,14 @@ public class Usuario extends javax.swing.JFrame {
 
     private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
         Gerencia g = new Gerencia(this, true);
-        g.setVisible(true);
     }//GEN-LAST:event_btnGerenteActionPerformed
 
     private void btnProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProfessorActionPerformed
         Professor p =new Professor(this, true);
-        p.setVisible(true);
     }//GEN-LAST:event_btnProfessorActionPerformed
 
     private void btnAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlunoActionPerformed
-        
+        Login l =new Login(this, true);
     }//GEN-LAST:event_btnAlunoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

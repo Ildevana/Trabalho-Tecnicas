@@ -22,6 +22,7 @@ public class Professor extends javax.swing.JDialog {
         initComponents();
         pack();
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -63,12 +64,10 @@ public class Professor extends javax.swing.JDialog {
 
     private void btnCriarProvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarProvaActionPerformed
         CadastrarProva cp = new CadastrarProva(parent, true);
-        cp.setVisible(true);
     }//GEN-LAST:event_btnCriarProvaActionPerformed
 
     private void btnCriarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarItemActionPerformed
         CadastroItemAval i = new CadastroItemAval(parent, true);
-        i.setVisible(true);
     }//GEN-LAST:event_btnCriarItemActionPerformed
 
 
