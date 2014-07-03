@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class Login extends javax.swing.JDialog {
 
     private java.awt.Frame parent;
-    private AlunoControler alunoControl;
+    private AlunoController alunoControl;
 
     /**
      * Creates new form Login
@@ -28,7 +28,7 @@ public class Login extends javax.swing.JDialog {
      */
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        alunoControl = new AlunoControler();
+        alunoControl = new AlunoController();
         initComponents();
         pack();
         setLocationRelativeTo(null);

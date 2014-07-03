@@ -6,6 +6,7 @@
 package gui;
 
 import Negocio.Alternativa;
+import Negocio.Categoria;
 import Negocio.DAOException;
 import Negocio.ItemAval;
 import Negocio.SistemaFachada;
@@ -23,8 +24,8 @@ public class ItemAvaliacaoController {
         sis = new SistemaFachada();
     }
 
-    public void inserirItem(String enunciado, String comentario,List<Alternativa> alts) throws DAOException {
-        ItemAval item = sis.inserirItem(enunciado, comentario);
+    public void inserirItem(String enunciado, String comentario,List<Alternativa> alts,List<Categoria> cats) throws DAOException {
+        ItemAval item = sis.inserirItem(enunciado, comentario,cats);
         int id = item.getIdItemAval();
         for (Alternativa a : alts) {
             sis.inserirAlternativa(id, a.getTexto(), a.isCorreta());

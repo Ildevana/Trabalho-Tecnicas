@@ -18,6 +18,7 @@ public class SelecaoProva extends javax.swing.JDialog {
     private CategoriaController cControl;
     private ProvaController pControl;
     private Aluno aluno;
+    private java.awt.Frame parent;
 
     /**
      * Creates new form SelecaoProva
@@ -175,7 +176,9 @@ public class SelecaoProva extends javax.swing.JDialog {
 
     private void btnRealizarSelecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarSelecActionPerformed
         int row = tableAvaliacoes.getSelectedRow();
-        System.out.println("ID:" + tableAvaliacoes.getValueAt(row, 0));
+        Integer id = Integer.parseInt(tableAvaliacoes.getValueAt(row, 0).toString());
+        System.out.println("ID:" + id);
+        RealizacaoProva r = new RealizacaoProva(parent, true, id, aluno.getIdAluno());
     }//GEN-LAST:event_btnRealizarSelecActionPerformed
 
     private void btnAddAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAllActionPerformed

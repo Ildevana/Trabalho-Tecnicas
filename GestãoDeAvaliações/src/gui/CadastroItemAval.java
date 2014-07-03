@@ -26,6 +26,7 @@ public class CadastroItemAval extends javax.swing.JDialog {
 
     /**
      * Creates new form CadastroItemAval
+     *
      * @param parent
      * @param modal
      */
@@ -47,7 +48,6 @@ public class CadastroItemAval extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         corretaGrp = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
@@ -160,6 +160,7 @@ public class CadastroItemAval extends javax.swing.JDialog {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, -1, -1));
 
         corretaGrp.add(rdAlt1);
+        rdAlt1.setSelected(true);
         rdAlt1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rdAlt1ActionPerformed(evt);
@@ -230,7 +231,10 @@ public class CadastroItemAval extends javax.swing.JDialog {
             crt = rdAlt5.isSelected();
             alts.add(new Alternativa(0, 0, txt, crt));
 
-            iControl.inserirItem(enu, com, alts);
+            List<Categoria> cats = ((ListCategoriaModel) lstCategorias.getModel()).getLista();
+            iControl.inserirItem(enu, com, alts, cats);
+            JOptionPane.showMessageDialog(null, "Item cadastrado com sucesso!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            initComponents();
         } catch (DAOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }

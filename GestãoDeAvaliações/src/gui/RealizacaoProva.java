@@ -3,20 +3,80 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package gui;
+
+import Negocio.Aluno;
+import Negocio.DAOException;
+import Negocio.ItemAval;
+import Negocio.Prova;
+import Negocio.Resposta;
+import java.awt.Component;
+import java.awt.PopupMenu;
+import java.util.ArrayList;
+import java.util.Queue;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author lasaro
  */
-public class RealizacaoProva extends javax.swing.JFrame {
+public class RealizacaoProva extends javax.swing.JDialog {
+
+    private Prova prova;
+    private ProvaController pCtrl;
+    private AlunoController aCtrl;
+    private Aluno aluno;
 
     /**
      * Creates new form RealizacaoProva
+     *
+     * @param parent
+     * @param modal
+     * @param prova
+     * @param aluno
      */
-    public RealizacaoProva() {
+    public RealizacaoProva(java.awt.Frame parent, boolean modal, Prova prova, Aluno aluno) {
+        super(parent, modal);
+        pCtrl = new ProvaController();
+        aCtrl = new AlunoController();
+        this.prova = prova;
+        this.aluno = aluno;
+        inicializar();
+    }
+
+    public RealizacaoProva(java.awt.Frame parent, boolean modal, int idProva, int idAluno) {
+        super(parent, modal);
+        try {
+            pCtrl = new ProvaController();
+            aCtrl = new AlunoController();
+            this.prova = pCtrl.buscarProvaPorId(idProva);
+            this.aluno = aCtrl.buscarAlunoPorId(idAluno);
+            inicializar();
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void inicializar() {
         initComponents();
+        try {
+            lblID.setText("" + prova.getIdProva());
+            lblNomeProf.setText(prova.getNomeProf());
+            Queue<ItemAval> filaQuestoes = pCtrl.getFilaQuestoes(prova);
+            panelItens.removeAll();
+            while (!filaQuestoes.isEmpty()) {
+                ItemAval item = filaQuestoes.poll();
+                ItemAvaliacaoPanel itemPanel = new ItemAvaliacaoPanel(item, prova.getIdProva(), aluno.getIdAluno());
+                panelItens.add(itemPanel);
+            }
+            pack();
+            setLocationRelativeTo(null);
+            setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**
@@ -28,24 +88,32 @@ public class RealizacaoProva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblLBLId = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblLBLNome = new javax.swing.JLabel();
         lblNomeProf = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         panelItens = new javax.swing.JPanel();
         itemAvaliacaoPanel1 = new gui.ItemAvaliacaoPanel();
         itemAvaliacaoPanel2 = new gui.ItemAvaliacaoPanel();
+        btnSubmit = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("ID da prova:");
+        lblLBLId.setText("ID da prova:");
+        getContentPane().add(lblLBLId, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 80, -1));
 
-        lblID.setText("jLabel2");
+        lblID.setText("_________");
+        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 11, 80, -1));
 
-        jLabel3.setText("Nome professor:");
+        lblLBLNome.setText("Nome professor:");
+        getContentPane().add(lblLBLNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 31, -1, -1));
 
-        lblNomeProf.setText("jLabel4");
+        lblNomeProf.setText("______________________");
+        getContentPane().add(lblNomeProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 31, 330, -1));
 
         panelItens.setLayout(new java.awt.GridLayout(0, 1));
         panelItens.add(itemAvaliacaoPanel1);
@@ -53,51 +121,52 @@ public class RealizacaoProva extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(panelItens);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblNomeProf, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lblID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lblNomeProf))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 51, 421, 349));
+
+        btnSubmit.setText("Submeter respostas");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 150, -1));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+
+        try {
+            Component[] components = panelItens.getComponents();
+            ArrayList<Resposta> resps;
+            resps = new ArrayList<>(components.length);
+            for (int i = 0; i < components.length; i++) {
+                ItemAvaliacaoPanel item;
+                item = (ItemAvaliacaoPanel) components[i];
+                Resposta r = item.getResposta();
+                if (r == null) {
+                    throw new Exception("Item ainda não respondido: " + item.getIDItem());
+                }
+                resps.add(r);
+            }
+            JOptionPane.showMessageDialog(null, "Submissao", "Error", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnSubmit;
+    private javax.swing.Box.Filler filler1;
     private gui.ItemAvaliacaoPanel itemAvaliacaoPanel1;
     private gui.ItemAvaliacaoPanel itemAvaliacaoPanel2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblLBLId;
+    private javax.swing.JLabel lblLBLNome;
     private javax.swing.JLabel lblNomeProf;
     private javax.swing.JPanel panelItens;
     // End of variables declaration//GEN-END:variables
+
 }

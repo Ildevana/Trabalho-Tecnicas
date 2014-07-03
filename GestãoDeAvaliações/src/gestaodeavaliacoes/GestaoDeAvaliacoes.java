@@ -88,7 +88,7 @@ public class GestaoDeAvaliacoes {
             for (ItemAval i : itens) {
                 System.out.println(i);
             }
-            List<Prova> provas = sis.buscarProvasAbertas();
+            List<Prova> provas = sis.avaliacoesDisponiveis();
             System.out.println("Provas abertas==============");
             for (Prova p : provas) {
                 System.out.println(p);

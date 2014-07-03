@@ -15,12 +15,13 @@ import java.util.Queue;
 
 public class SistemaFachada {
 
-    AlternativaDAO altDAO;
-    AlunoDAO aluDAO;
-    CategoriaDAO catDAO;
-    ItemAvalDAO itemDAO;
-    ProvaDAO provaDAO;
-    RespostaDAO respDAO;
+    private final AlternativaDAO altDAO;
+    private final AlunoDAO aluDAO;
+    private final CategoriaDAO catDAO;
+    private final ItemAvalDAO itemDAO;
+    private final ProvaDAO provaDAO;
+    private final RespostaDAO respDAO;
+    private final GeradorFilaQuestoes geradorQ;
 
     public SistemaFachada() {
         altDAO = new AlternativaDAODerby();
@@ -29,6 +30,7 @@ public class SistemaFachada {
         itemDAO = new ItemAvalDAODerby();
         provaDAO = new ProvaDAODerby();
         respDAO = new RespostaDAODerby();
+        geradorQ = new GeradorFilaQuestoes();
     }
 
     public void validarItemAvaliacao(ItemAval item) {
@@ -54,23 +56,28 @@ public class SistemaFachada {
     }
 
     public Queue<ItemAval> getFilaQuestoes(Prova prova) throws Exception {
-        return (new GeradorFilaQuestoes()).gerarFilaProva(prova);
+        return geradorQ.gerarFilaProva(prova);
     }
 
-    public List<Prova> avaliacoesDisponiveis() {
-        return null;
+    public List<Prova> avaliacoesDisponiveis() throws DAOException {
+        return provaDAO.buscarAbertas();
     }
 
-    public List<Prova> avaliacoesDisponiveis(List<Categoria> categorias) {
-        return null;
+    public List<Prova> avaliacoesDisponiveis(List<Categoria> cats) throws DAOException {
+        return provaDAO.buscarProvasAbertasPorCategorias(cats);
     }
 
     public void gravarRespostas(List<Resposta> respostas, Aluno aluno) {
 
     }
 
-    public Prova buscarProvaFechada(String hash) {
-        return null;
+    public void inserirResposta(int idItemAval, int idProva, int alternativaMarcada, int idAluno) throws DAOException {
+        Resposta resposta = new Resposta(idItemAval, idProva, alternativaMarcada, idAluno);
+        respDAO.inserir(resposta);
+    }
+
+    public Prova buscarProvaFechada(String hashProva) throws DAOException {
+        return provaDAO.buscarPorHash(hashProva);
     }
 
     public String relatorioUso() {
@@ -144,10 +151,13 @@ public class SistemaFachada {
         return itemDAO.buscarPorId(idItemAval);
     }
 
-    public ItemAval inserirItem(String enumciado, String comentario) throws DAOException {
+    public ItemAval inserirItem(String enumciado, String comentario, List<Categoria> cats) throws DAOException {
         int idItemAval = GerenciadorBancoDados.getSequenciaTabela(TabelaSequencia.ItemAval);
         ItemAval item = new ItemAval(idItemAval, enumciado, comentario);
         itemDAO.inserir(item);
+        for (Categoria c : cats) {
+            addCategoriaItem(idItemAval, c.getCat());
+        }
         return item;
     }
 
@@ -179,19 +189,6 @@ public class SistemaFachada {
         return provaDAO.buscarPorId(idProva);
     }
 
-    public Prova buscarProvaPorHash(String hashProva) throws DAOException {
-        return provaDAO.buscarPorHash(hashProva);
-    }
-
-    public List<Prova> buscarProvasAbertas() throws DAOException {
-        return provaDAO.buscarAbertas();
-    }
-
-    public void inserirResposta(int idItemAval, int idProva, int alternativaMarcada, int idAluno) throws DAOException {
-        Resposta resposta = new Resposta(idItemAval, idProva, alternativaMarcada, idAluno);
-        respDAO.inserir(resposta);
-    }
-
     public List<Resposta> buscarRespostasPorProva(int idProva) throws DAOException {
         return respDAO.buscarPorProva(idProva);
     }
@@ -200,7 +197,4 @@ public class SistemaFachada {
         return catDAO.buscarPorProva(idProva);
     }
 
-    public List<Prova> buscarProvasPorCategorias(List<Categoria> cats) throws DAOException {
-        return provaDAO.buscarProvasAbertasPorCategorias(cats);
-    }
 }

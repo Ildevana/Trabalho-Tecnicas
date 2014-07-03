@@ -7,9 +7,11 @@ package gui;
 
 import Negocio.Categoria;
 import Negocio.DAOException;
+import Negocio.ItemAval;
 import Negocio.Prova;
 import Negocio.SistemaFachada;
 import java.util.List;
+import java.util.Queue;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
@@ -28,7 +30,7 @@ public class ProvaController {
 
     public TableModel getAvaliacoesAbertas() {
         try {
-            List<Prova> provasAbertas = sis.buscarProvasAbertas();
+            List<Prova> provasAbertas = sis.avaliacoesDisponiveis();
             ProvaTableModel pTM = new ProvaTableModel(provasAbertas);
             for (Prova prova : provasAbertas) {
                 List<Categoria> cats = sis.buscarCategoriasProva(prova.getIdProva());
@@ -52,7 +54,7 @@ public class ProvaController {
 
     public TableModel getProvasPorCategorias(List<Categoria> cats) {
         try {
-            List<Prova> provasAbertas = sis.buscarProvasPorCategorias(cats);
+            List<Prova> provasAbertas = sis.avaliacoesDisponiveis(cats);
             ProvaTableModel pTM = new ProvaTableModel(provasAbertas);
             return pTM.getTableModel();
         } catch (DAOException ex) {
@@ -60,5 +62,13 @@ public class ProvaController {
         }
 
         return null;
+    }
+
+    public Queue<ItemAval> getFilaQuestoes(Prova p) throws Exception {
+        return sis.getFilaQuestoes(p);
+    }
+
+    public Prova buscarProvaPorId(int idProva) throws DAOException {
+        return sis.buscarProvaPorId(idProva);
     }
 }
