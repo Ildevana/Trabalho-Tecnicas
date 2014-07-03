@@ -1,5 +1,6 @@
 package dados;
 
+import Negocio.Categoria;
 import Negocio.CategoriaDAO;
 import Negocio.DAOException;
 import Negocio.Prova;
@@ -8,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -125,6 +127,47 @@ public class ProvaDAODerby implements ProvaDAO {
             con.close();
         } catch (Exception ex) {
             throw new DAOException("Falha ao inserir. " + ex.getMessage());
+        }
+    }
+
+    @Override
+    public List<Prova> buscarProvasAbertasPorCategorias(List<Categoria> cats) throws DAOException {
+        List<Prova> provas = new LinkedList<>();
+        try {
+            if (cats.isEmpty()) {
+                throw new Exception("Deve ser informado pelo menos uma categoria");
+            }
+            Connection con = GerenciadorBancoDados.conectarBd();
+            String sIN = "";
+            Iterator<Categoria> it = cats.iterator();
+            while (it.hasNext()) {
+                Categoria i = it.next();
+                sIN += i.getCat();
+                if (it.hasNext()) {
+                    sIN += ",";
+                }
+            }
+            String sql = "SELECT PRO.ID_PROVA, PRO.ABERTA, PRO.NOME_PROF, PRO.QT_QUESTOES, PRO.HASH";
+            sql += " FROM PROVA PRO";
+            sql += " LEFT JOIN PROVA_CATEGORIA PROVACAT";
+            sql += " ON PROVACAT.ID_PROVA = PRO.ID_PROVA";
+            sql += " WHERE PROVACAT.ID_CATEGORIA IN (" + sIN + ")";
+            sql += " AND PRO.ABERTA = 1";
+
+            PreparedStatement sta = con.prepareStatement(sql);
+            ResultSet res = sta.executeQuery();
+            while (res.next()) {
+                provas.add(new Prova(res.getInt("ID_PROVA"),
+                        (res.getInt("ABERTA") == 1),
+                        res.getString("NOME_PROF"),
+                        res.getInt("QT_QUESTOES"),
+                        res.getString("HASH")));
+            }
+            res.close();
+            con.close();
+            return provas;
+        } catch (Exception ex) {
+            throw new DAOException("Falha na busca. " + ex.getMessage());
         }
     }
 

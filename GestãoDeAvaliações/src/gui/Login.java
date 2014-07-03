@@ -55,13 +55,13 @@ public class Login extends javax.swing.JDialog {
         btnLogin = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbxAluno.setModel(alunoControl.getComboBoxModel());
-        add(cbxAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 330, -1));
+        getContentPane().add(cbxAluno, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 330, -1));
 
         jLabel3.setText("Nome:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
 
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,17 +69,17 @@ public class Login extends javax.swing.JDialog {
                 btnSalvarActionPerformed(evt);
             }
         });
-        add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, 20));
+        getContentPane().add(btnSalvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 80, 20));
 
         jLabel4.setText("Selecione seu nome do aluno para entrar");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 210, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(txtNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 190, 20));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("OU cadastre-se");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 350, 20));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 10));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 130, 10));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 350, 20));
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 130, 10));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 130, 10));
 
         btnLogin.setText("Entrar");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -87,8 +87,8 @@ public class Login extends javax.swing.JDialog {
                 btnLoginActionPerformed(evt);
             }
         });
-        add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 60, 80, -1));
-        add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 350, -1));
+        getContentPane().add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(133, 60, 80, -1));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 350, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed

@@ -199,4 +199,8 @@ public class SistemaFachada {
     public List<Categoria> buscarCategoriasProva(int idProva) throws DAOException {
         return catDAO.buscarPorProva(idProva);
     }
+
+    public List<Prova> buscarProvasPorCategorias(List<Categoria> cats) throws DAOException {
+        return provaDAO.buscarProvasAbertasPorCategorias(cats);
+    }
 }

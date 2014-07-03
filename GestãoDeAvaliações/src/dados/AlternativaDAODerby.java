@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class AlternativaDAODerby implements AlternativaDAO {
@@ -38,7 +39,7 @@ public class AlternativaDAODerby implements AlternativaDAO {
 
     @Override
     public List<Alternativa> buscarTodasDoItem(int item) throws DAOException {
-        List<Alternativa> alts = null;
+        List<Alternativa> alts = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ID_ITEMAVAL, SQ_ALTERNATIVA,TEXTO,CORRETA FROM ALTERNATIVAS WHERE ID_ITEMAVAL = ?";

@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
  */
 public class ProvaController {
 
-    SistemaFachada sis;
+    private SistemaFachada sis;
 
     public ProvaController() {
         sis = new SistemaFachada();
@@ -48,5 +48,17 @@ public class ProvaController {
     public String inserir(List<Categoria> cats, String nomeProf, int qtQuestoes, boolean aberta) throws DAOException {
         String hash = sis.criarProva(cats, nomeProf, qtQuestoes, aberta);
         return hash;
+    }
+
+    public TableModel getProvasPorCategorias(List<Categoria> cats) {
+        try {
+            List<Prova> provasAbertas = sis.buscarProvasPorCategorias(cats);
+            ProvaTableModel pTM = new ProvaTableModel(provasAbertas);
+            return pTM.getTableModel();
+        } catch (DAOException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return null;
     }
 }

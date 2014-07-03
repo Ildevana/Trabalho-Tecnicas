@@ -48,7 +48,7 @@ public class Professor extends javax.swing.JDialog {
                 btnCriarItemActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCriarItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 17, -1, -1));
+        getContentPane().add(btnCriarItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, -1));
 
         btnCriarProva.setText("Criar Prova");
         btnCriarProva.addActionListener(new java.awt.event.ActionListener() {
@@ -56,8 +56,8 @@ public class Professor extends javax.swing.JDialog {
                 btnCriarProvaActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCriarProva, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 40, 129, -1));
-        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 80));
+        getContentPane().add(btnCriarProva, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 170, -1));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 110));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

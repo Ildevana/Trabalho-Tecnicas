@@ -19,4 +19,6 @@ public interface ProvaDAO {
 
     public List<Prova> buscarAbertas() throws DAOException;
 
+    public List<Prova> buscarProvasAbertasPorCategorias(List<Categoria> cats) throws DAOException;
+
 }

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.List;
 
 public class RespostaDAODerby implements RespostaDAO {
@@ -38,7 +39,7 @@ public class RespostaDAODerby implements RespostaDAO {
 
     @Override
     public List<Resposta> buscarPorProva(int idProva) throws DAOException {
-        List<Resposta> resps = null;
+        List<Resposta> resps = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ID_PROVA, ID_ITEMAVAL,ALTERNATIVA_MARCADA,ID_ALUNO FROM RESPOSTAS WHERE ID_PROVA = ?";

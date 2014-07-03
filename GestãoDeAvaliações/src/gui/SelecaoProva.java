@@ -67,7 +67,7 @@ public class SelecaoProva extends javax.swing.JDialog {
         jLabel1.setText("Avaliações disponíveis");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        tableAvaliacoes.setModel(new ProvaController().getAvaliacoesAbertas());
+        tableAvaliacoes.setModel(pControl.getAvaliacoesAbertas());
         tableAvaliacoes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tableAvaliacoes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tableAvaliacoes);
@@ -75,6 +75,11 @@ public class SelecaoProva extends javax.swing.JDialog {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 31, 440, 150));
 
         btnFiltrar.setText("Filtrar");
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 100, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 830, 10));
 
@@ -82,7 +87,7 @@ public class SelecaoProva extends javax.swing.JDialog {
         getContentPane().add(btnRealizarFechada, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, 150, -1));
 
         jLabel2.setText("Hash de prova fechada:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, 20));
 
         btnRealizarSelec.setText("Realizar selecionada");
         btnRealizarSelec.addActionListener(new java.awt.event.ActionListener() {
@@ -192,6 +197,15 @@ public class SelecaoProva extends javax.swing.JDialog {
         lstBaseCat.setModel(m1);
         lstCategorias.setModel(m2);
     }//GEN-LAST:event_btnRemoveAllActionPerformed
+
+    private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        List<Categoria> cats = ((ListCategoriaModel) lstCategorias.getModel()).getLista();
+        if (cats.isEmpty()) {
+            tableAvaliacoes.setModel(pControl.getAvaliacoesAbertas());
+        } else {
+            tableAvaliacoes.setModel(pControl.getProvasPorCategorias(cats));
+        }
+    }//GEN-LAST:event_btnFiltrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAll;

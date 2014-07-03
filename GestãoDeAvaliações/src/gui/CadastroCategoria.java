@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author lasaro
  */
-public class CadastroCategoria extends javax.swing.JFrame {
+public class CadastroCategoria extends javax.swing.JDialog {
 
     private CategoriaController cControl;
     private boolean novo;
@@ -23,10 +23,14 @@ public class CadastroCategoria extends javax.swing.JFrame {
     /**
      * Creates new form CadastroCategoria
      */
-    public CadastroCategoria() {
+    public CadastroCategoria(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         cControl = new CategoriaController();
         novo = true;
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -48,7 +52,7 @@ public class CadastroCategoria extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Categorias Existentes");
 
@@ -62,6 +66,8 @@ public class CadastroCategoria extends javax.swing.JFrame {
         jScrollPane1.setViewportView(lstCat);
 
         jLabel2.setText("Id");
+
+        txtID.setEnabled(false);
 
         jLabel3.setText("Nome");
 

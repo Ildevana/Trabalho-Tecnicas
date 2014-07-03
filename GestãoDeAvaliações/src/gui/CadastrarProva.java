@@ -41,7 +41,6 @@ public class CadastrarProva extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         tipoProva = new javax.swing.ButtonGroup();
         jLabel6 = new javax.swing.JLabel();
@@ -73,12 +72,12 @@ public class CadastrarProva extends javax.swing.JDialog {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, 20));
 
         jLabel3.setText("Selecionar Categorias:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         lstBaseCat.setModel(cControl.getListModel());
         jScrollPane9.setViewportView(lstBaseCat);
 
-        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 170, 190));
+        getContentPane().add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 170, 190));
 
         btnAddCat.setText(">");
         btnAddCat.setToolTipText("");
@@ -87,7 +86,7 @@ public class CadastrarProva extends javax.swing.JDialog {
                 btnAddCatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAddCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 50, -1));
+        getContentPane().add(btnAddCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 60, -1));
 
         btnRemCat.setText("<");
         btnRemCat.addActionListener(new java.awt.event.ActionListener() {
@@ -95,15 +94,15 @@ public class CadastrarProva extends javax.swing.JDialog {
                 btnRemCatActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRemCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 50, -1));
+        getContentPane().add(btnRemCat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 60, -1));
 
         lstCategorias.setModel(new ListCategoriaModel());
         jScrollPane6.setViewportView(lstCategorias);
 
-        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 170, 190));
+        getContentPane().add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 170, 190));
 
         jLabel5.setText("Selecionar tipo de Prova:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, 20));
 
         tipoProva.add(rdAberta);
         rdAberta.setSelected(true);
@@ -113,11 +112,11 @@ public class CadastrarProva extends javax.swing.JDialog {
                 rdAbertaActionPerformed(evt);
             }
         });
-        getContentPane().add(rdAberta, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, -1, 20));
+        getContentPane().add(rdAberta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 20));
 
         tipoProva.add(rdFechada);
         rdFechada.setText("Fechada");
-        getContentPane().add(rdFechada, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, 20));
+        getContentPane().add(rdFechada, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, 20));
 
         jButton7.setText("Salvar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +124,7 @@ public class CadastrarProva extends javax.swing.JDialog {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 70, -1));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 70, -1));
 
         btnAddAll.setText(">>");
         btnAddAll.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +132,7 @@ public class CadastrarProva extends javax.swing.JDialog {
                 btnAddAllActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAddAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 50, -1));
+        getContentPane().add(btnAddAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 60, -1));
 
         btnRemoveAll.setText("<<");
         btnRemoveAll.setToolTipText("");
@@ -142,10 +141,10 @@ public class CadastrarProva extends javax.swing.JDialog {
                 btnRemoveAllActionPerformed(evt);
             }
         });
-        getContentPane().add(btnRemoveAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 50, -1));
-        getContentPane().add(txtNomeProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 320, -1));
-        getContentPane().add(txtQtdQuestoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 40, -1));
-        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 320));
+        getContentPane().add(btnRemoveAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, 60, -1));
+        getContentPane().add(txtNomeProf, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 280, 20));
+        getContentPane().add(txtQtdQuestoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 40, 20));
+        getContentPane().add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -132,7 +132,7 @@ public class ItemAvalDAODerby implements ItemAvalDAO {
 
     @Override
     public List<ItemAval> buscarPorCategoria(int cat) throws DAOException {
-        List<ItemAval> itens = new LinkedList<>();;
+        List<ItemAval> itens = new LinkedList<>();
         try {
             Connection con = GerenciadorBancoDados.conectarBd();
             String sql = "SELECT ITEMCAT.ID_ITEMAVAL, ITEMCAT.ID_CATEGORIA,ITEM.ENUN, ITEM.COMENTARIO"
@@ -176,7 +176,7 @@ public class ItemAvalDAODerby implements ItemAvalDAO {
                     + " FROM ITEMAVAL_CATEGORIA ITEMCAT"
                     + " LEFT JOIN ITEMAVAL ITEM"
                     + " ON ITEM.ID_ITEMAVAL = ITEMCAT.ID_ITEMAVAL"
-                    + " WHERE ITEM.ID_CATEGORIA IN (" + sIN + ")";
+                    + " WHERE ITEMCAT.ID_CATEGORIA IN (" + sIN + ")";
             PreparedStatement sta = con.prepareStatement(sql);
 
             ResultSet res = sta.executeQuery();
