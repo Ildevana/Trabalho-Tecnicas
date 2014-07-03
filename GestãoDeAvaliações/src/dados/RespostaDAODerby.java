@@ -27,6 +27,11 @@ public class RespostaDAODerby implements RespostaDAO {
             sta.setInt(2, resposta.getIdItemAval());
             sta.setInt(3, resposta.getAlternativaMarcada());
             sta.setInt(4, resposta.getIdAluno());
+            System.out.print("SQL RESP: " + sql+" ");
+            System.out.print(resposta.getIdProva());
+            System.out.print(resposta.getIdItemAval());
+            System.out.print(resposta.getAlternativaMarcada());
+            System.out.println(resposta.getIdAluno());
             sta.executeUpdate();
             sta.close();
             con.close();

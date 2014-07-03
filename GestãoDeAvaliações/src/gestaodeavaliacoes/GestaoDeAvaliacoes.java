@@ -75,7 +75,7 @@ public class GestaoDeAvaliacoes {
             //new CadastroCategoria().setVisible(true);
             //new CadastroItemAval().setVisible(true);
             //GerenciadorBancoDados.limparBD();
-            //GerenciadorBancoDados.inicializarBd();
+           //GerenciadorBancoDados.inicializarBd();
             new Usuario();
             listarTudo();
         } catch (Exception ex) {

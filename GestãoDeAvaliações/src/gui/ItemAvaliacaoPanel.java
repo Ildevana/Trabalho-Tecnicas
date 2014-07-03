@@ -67,6 +67,8 @@ public class ItemAvaliacaoPanel extends javax.swing.JPanel {
         if (i < radioIndex.length) {
             throw new Exception("Numero de alternativas do item " + item.getIdItemAval() + " é insuficiente.");
         }
+        this.idProva = idProva;
+        this.idAluno = idAluno;
 
     }
 

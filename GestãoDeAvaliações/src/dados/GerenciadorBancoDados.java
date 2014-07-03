@@ -58,7 +58,7 @@ public class GerenciadorBancoDados {
         String sql;
         //FileReader fr = new FileReader("../../create.sql");
         String createFile;
-        createFile = "/home/lasaro/Downloads/SQLQueryTrabalho.sql";
+        createFile = "C:\\Users\\Ildevana\\Documents\\GitHub\\Trabalho-Tecnicas\\SQLQueryTrabalho.sql";
         sql = "";
         Scanner scanner = new Scanner(new FileReader(createFile));
         while (scanner.hasNextLine()) {
