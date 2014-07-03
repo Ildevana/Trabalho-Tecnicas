@@ -52,6 +52,31 @@ public class GerenciadorBancoDados {
         con.close();
     }
 
+    public static void inicializarBd() throws Exception {
+        Connection con = DriverManager.getConnection("jdbc:derby:" + dbName + ";create=true");
+        Statement sta = con.createStatement();
+        String sql;
+        //FileReader fr = new FileReader("../../create.sql");
+        String createFile;
+        createFile = "/home/lasaro/Downloads/SQLQueryTrabalho.sql";
+        sql = "";
+        Scanner scanner = new Scanner(new FileReader(createFile));
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            sql = sql + line + "\n";
+        }
+        String[] split = sql.split(";");
+        for (String s : split) {
+            //System.out.println("'\n" + s + "'");
+            if (!s.trim().equals("")) {
+                sta.execute(s);
+            }
+        }
+
+        sta.close();
+        con.close();
+    }
+
     public static void limparBD() throws SQLException {
         Connection con = DriverManager.getConnection("jdbc:derby:" + dbName + ";create=true");
         Statement sta = con.createStatement();
@@ -65,7 +90,7 @@ public class GerenciadorBancoDados {
                 + "DELETE FROM ALTERNATIVAS;"
                 + "DELETE FROM PROVA;"
                 + "DELETE FROM ITEMAVAL;";
-        
+
         String[] split = sql.split(";");
         for (String s : split) {
             //System.out.println("'\n" + s + "'");

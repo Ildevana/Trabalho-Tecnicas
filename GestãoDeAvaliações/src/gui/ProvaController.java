@@ -9,6 +9,7 @@ import Negocio.Categoria;
 import Negocio.DAOException;
 import Negocio.ItemAval;
 import Negocio.Prova;
+import Negocio.Resposta;
 import Negocio.SistemaFachada;
 import java.util.List;
 import java.util.Queue;
@@ -70,5 +71,9 @@ public class ProvaController {
 
     public Prova buscarProvaPorId(int idProva) throws DAOException {
         return sis.buscarProvaPorId(idProva);
+    }
+
+    public void submeterRespostas(List<Resposta> resps) throws DAOException {
+        sis.gravarRespostas(resps);
     }
 }

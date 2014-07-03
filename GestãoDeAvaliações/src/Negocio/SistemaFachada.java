@@ -67,13 +67,10 @@ public class SistemaFachada {
         return provaDAO.buscarProvasAbertasPorCategorias(cats);
     }
 
-    public void gravarRespostas(List<Resposta> respostas, Aluno aluno) {
-
-    }
-
-    public void inserirResposta(int idItemAval, int idProva, int alternativaMarcada, int idAluno) throws DAOException {
-        Resposta resposta = new Resposta(idItemAval, idProva, alternativaMarcada, idAluno);
-        respDAO.inserir(resposta);
+    public void gravarRespostas(List<Resposta> respostas) throws DAOException {
+        for (Resposta resposta : respostas) {
+            respDAO.inserir(resposta);
+        }
     }
 
     public Prova buscarProvaFechada(String hashProva) throws DAOException {

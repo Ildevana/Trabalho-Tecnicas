@@ -150,6 +150,7 @@ public class RealizacaoProva extends javax.swing.JDialog {
                 }
                 resps.add(r);
             }
+            pCtrl.submeterRespostas(resps);
             JOptionPane.showMessageDialog(null, "Submissao", "Error", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

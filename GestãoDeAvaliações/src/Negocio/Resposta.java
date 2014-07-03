@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Negocio;
 
 /**
@@ -11,6 +10,7 @@ package Negocio;
  * @author Ildevana
  */
 public class Resposta {
+
     private int idItemAval;
     private int idProva;
     private int alternativaMarcada;
@@ -78,4 +78,10 @@ public class Resposta {
     public void setIdAluno(int idAluno) {
         this.idAluno = idAluno;
     }
+
+    @Override
+    public String toString() {
+        return "ID Item: " + idItemAval + " ID Prova: " + idProva + " Alt.Marcada: " + alternativaMarcada + " ID Aluno: " + idAluno;
+    }
+
 }

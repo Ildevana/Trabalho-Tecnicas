@@ -9,6 +9,7 @@ import Negocio.Categoria;
 import Negocio.DAOException;
 import Negocio.ItemAval;
 import Negocio.Prova;
+import Negocio.Resposta;
 import Negocio.SistemaFachada;
 import dados.GerenciadorBancoDados;
 import gui.CadastrarProva;
@@ -61,18 +62,20 @@ public class GestaoDeAvaliacoes {
 
             /* Create and display the form */
             /*
-            java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    new Usuario().setVisible(true);
-                }
-            });
-            //*/
+             java.awt.EventQueue.invokeLater(new Runnable() {
+             public void run() {
+             new Usuario().setVisible(true);
+             }
+             });
+             //*/
             // TODO code application logic here
             //InicializadorBancoDados.criarBd();//já criado :D
             //new CadastrarProva().setVisible(true);
             //new SelecaoProva().setVisible(true);
             //new CadastroCategoria().setVisible(true);
             //new CadastroItemAval().setVisible(true);
+            //GerenciadorBancoDados.limparBD();
+            //GerenciadorBancoDados.inicializarBd();
             new Usuario();
             listarTudo();
         } catch (Exception ex) {
@@ -95,6 +98,11 @@ public class GestaoDeAvaliacoes {
                 List<Categoria> cats = sis.buscarCategoriasProva(p.getIdProva());
                 for (Categoria c : cats) {
                     System.out.println(c);
+                }
+                List<Resposta> res = sis.buscarRespostasPorProva(p.getIdProva());
+                System.out.println("Respostas:________");
+                for (Resposta r : res) {
+                    System.out.println("\t\t" + r);
                 }
             }
             //GerenciadorBancoDados.limparBD();
